@@ -8,6 +8,7 @@ import com.aaomidi.dev.lilybook.engine.modules.LilyEvent;
 import lilypad.client.connect.api.event.EventListener;
 import lilypad.client.connect.api.event.MessageEvent;
 import lilypad.client.connect.api.request.impl.MessageRequest;
+import lilypad.client.connect.api.request.impl.RedirectRequest;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -82,12 +83,21 @@ public class LilyManager {
      * @param message     The information to go with the MessageRequest.
      * @param servers     List of servers.
      */
-    public void asyncMessageRequest(final ChannelType channelType, final String message, final String[] servers) {
+    public void asyncMessageRequest(final ChannelType channelType, final String message, final String... servers) {
         new BukkitRunnable() {
             @Override
             public void run() {
                 messageRequest(channelType, message, servers);
             }
         }.runTaskAsynchronously(instance);
+    }
+
+    public void teleportRequest(final String playerName, final String serverName) {
+        RedirectRequest request = new RedirectRequest(serverName, playerName);
+        try {
+            instance.getConnect().request(request);
+        } catch (Exception ex) {
+            throw new RuntimeException("Error whilst redirecting a player." + ex);
+        }
     }
 }

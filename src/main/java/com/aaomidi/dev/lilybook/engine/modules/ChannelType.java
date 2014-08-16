@@ -5,7 +5,9 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public enum ChannelType {
+    DISPATCH_COMMAND("DispatchCommand"),
     SEND_PLAYER_LIST("SendPlayerList");
+
     private final String channelName;
 
     @Override

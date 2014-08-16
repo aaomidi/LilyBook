@@ -2,6 +2,8 @@ package com.aaomidi.dev.lilybook.engine;
 
 
 import com.aaomidi.dev.lilybook.LilyBook;
+import com.aaomidi.dev.lilybook.engine.commands.DispatchCommand;
+import com.aaomidi.dev.lilybook.engine.commands.FindCommand;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -17,10 +19,18 @@ public class CommandsManager implements CommandExecutor {
     public CommandsManager(LilyBook instance) {
         this.instance = instance;
         commands = new HashMap<>();
+        this.setupCommands();
+    }
+
+    public void setupCommands() {
+        new DispatchCommand("dispatch", "lilybook.dispatch", true, "&3/dispatch &e(-s ServerName) [Command]");
+        new FindCommand("find", "lilybook.find", false, "&3/find &e[PlayerName]");
     }
 
     public static void register(LilyCommand lilyCommand) {
         commands.put(lilyCommand.getName(), lilyCommand);
+        LilyBook instance = LilyBook.getInstance();
+        instance.getCommand(lilyCommand.getName()).setExecutor(instance.getCommandsManager());
     }
 
     @Override
