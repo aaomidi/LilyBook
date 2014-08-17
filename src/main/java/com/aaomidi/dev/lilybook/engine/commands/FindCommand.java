@@ -55,7 +55,7 @@ public class FindCommand extends LilyCommand {
                 for (Map.Entry<String, String> entrySet : possibleMatches.entrySet()) {
                     sb.append(String.format("&bPlayer: &e%s &bon Server: &e%s \n", entrySet.getKey(), entrySet.getValue()));
                 }
-                commandSender.sendMessage(sb.toString());
+                StringManager.sendMessage(commandSender, sb.toString());
             }
         }.runTaskAsynchronously(instance);
         return true;
