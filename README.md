@@ -8,7 +8,9 @@ Thanks to these people for reviewing the code and helping me find the bugs!
 
 @L33m4n123 - Reviewing the code.
 
-@edyyy - Testing the plugin for me.
+@edyyy - Testing the plugin. - cowcraft.net
+
+@roastnewt - Testing the plugin. - minepure.com
 
 ----------
 
