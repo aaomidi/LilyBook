@@ -25,6 +25,7 @@ public class RunnableManager {
 
     public void initialize() {
         this.scheduleSendPlayerList();
+        this.scheduleSendStaffList();
     }
 
     private void scheduleSendPlayerList() {
