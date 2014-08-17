@@ -3,6 +3,7 @@ package com.aaomidi.dev.lilybook.engine.commands;
 
 import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.Caching;
+import com.aaomidi.dev.lilybook.engine.CommandsManager;
 import com.aaomidi.dev.lilybook.engine.StringManager;
 import com.aaomidi.dev.lilybook.engine.modules.Callback;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
@@ -13,6 +14,7 @@ import org.bukkit.command.CommandSender;
 public class ServerCommand extends LilyCommand {
     public ServerCommand(String name, String permission, boolean forcePlayer, String usage) {
         super(name, permission, forcePlayer, usage);
+        CommandsManager.register(this);
     }
 
     @Override

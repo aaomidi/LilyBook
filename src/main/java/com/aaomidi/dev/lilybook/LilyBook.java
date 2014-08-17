@@ -6,6 +6,7 @@ import com.aaomidi.dev.lilybook.engine.CommandsManager;
 import com.aaomidi.dev.lilybook.engine.LilyManager;
 import com.aaomidi.dev.lilybook.engine.RunnableManager;
 import com.aaomidi.dev.lilybook.engine.configuration.ConfigReader;
+import com.earth2me.essentials.Essentials;
 import lilypad.client.connect.api.Connect;
 import lombok.Getter;
 import org.bukkit.entity.Player;
@@ -31,6 +32,8 @@ public class LilyBook extends JavaPlugin {
     private RunnableManager runnableManager;
     @Getter
     private Caching caching;
+    @Getter
+    private static Essentials essentials;
 
     public void onLoad() {
 
@@ -38,6 +41,7 @@ public class LilyBook extends JavaPlugin {
 
     public void onEnable() {
         this.setupLily();
+        this.setupEssentials();
         this.registerClasses();
     }
 
@@ -52,6 +56,16 @@ public class LilyBook extends JavaPlugin {
             SERVER_NAME = connect.getSettings().getUsername();
         }
     }
+
+    private void setupEssentials() {
+        Plugin plugin = this.getServer().getPluginManager().getPlugin("Essentials");
+        if (plugin == null) {
+            this.getLogger().log(Level.INFO, "Essentials was not found on the server, disabling integration with essentials.");
+            return;
+        }
+        essentials = (Essentials) plugin;
+    }
+
 
     private void registerClasses() {
         lilyManager = new LilyManager(this);

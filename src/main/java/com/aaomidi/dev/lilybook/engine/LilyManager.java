@@ -5,6 +5,7 @@ import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.lilyevents.AdminChatEvent;
 import com.aaomidi.dev.lilybook.engine.lilyevents.DispatchEvent;
 import com.aaomidi.dev.lilybook.engine.lilyevents.SendPlayersEvent;
+import com.aaomidi.dev.lilybook.engine.lilyevents.SendStaffEvent;
 import com.aaomidi.dev.lilybook.engine.modules.Callback;
 import com.aaomidi.dev.lilybook.engine.modules.ChannelType;
 import com.aaomidi.dev.lilybook.engine.modules.LilyEvent;
@@ -40,7 +41,8 @@ public class LilyManager {
     private void setupEvents() {
         new AdminChatEvent(ChannelType.ADMIN_CHAT_MESSAGE);
         new DispatchEvent(ChannelType.DISPATCH_COMMAND);
-        new SendPlayersEvent(ChannelType.SEND_PLAYER_LIST);
+        new SendPlayersEvent(ChannelType.PLAYER_LIST);
+        new SendStaffEvent(ChannelType.STAFF_LIST);
     }
 
     public static void register(LilyEvent lilyEvent) {
