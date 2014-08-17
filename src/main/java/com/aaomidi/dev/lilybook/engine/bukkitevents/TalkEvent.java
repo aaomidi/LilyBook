@@ -16,12 +16,8 @@ public class TalkEvent implements Listener {
 
     public TalkEvent(LilyBook instance) {
         this.instance = instance;
-        this.init();
     }
 
-    private void init() {
-        instance.registerEvent(this);
-    }
 
     @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onTalk(AsyncPlayerChatEvent event) {

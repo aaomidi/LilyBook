@@ -16,11 +16,7 @@ public class ConnectionEvent implements Listener {
 
     public ConnectionEvent(LilyBook instance) {
         this.instance = instance;
-        this.init();
-    }
 
-    private void init() {
-        instance.registerEvent(this);
     }
 
     @EventHandler(priority = EventPriority.MONITOR)

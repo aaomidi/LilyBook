@@ -5,6 +5,8 @@ import com.aaomidi.dev.lilybook.engine.Caching;
 import com.aaomidi.dev.lilybook.engine.CommandsManager;
 import com.aaomidi.dev.lilybook.engine.LilyManager;
 import com.aaomidi.dev.lilybook.engine.RunnableManager;
+import com.aaomidi.dev.lilybook.engine.bukkitevents.ConnectionEvent;
+import com.aaomidi.dev.lilybook.engine.bukkitevents.TalkEvent;
 import com.aaomidi.dev.lilybook.engine.configuration.ConfigReader;
 import com.earth2me.essentials.Essentials;
 import lilypad.client.connect.api.Connect;
@@ -30,6 +32,8 @@ public class LilyBook extends JavaPlugin {
     @Getter
     private LilyManager lilyManager;
     @Getter
+    private ConfigReader configReader;
+    @Getter
     private CommandsManager commandsManager;
     @Getter
     private RunnableManager runnableManager;
@@ -47,6 +51,13 @@ public class LilyBook extends JavaPlugin {
     }
 
     public void onEnable() {
+        configReader = new ConfigReader(this, this.getConfig());
+        lilyManager = new LilyManager(this);
+        caching = new Caching(this);
+        runnableManager = new RunnableManager(this);
+        commandsManager = new CommandsManager(this);
+        registerEvent(new ConnectionEvent(this));
+        registerEvent(new TalkEvent(this));
         this.setupLily();
         this.setupEssentials();
         this.registerClasses();
@@ -76,13 +87,13 @@ public class LilyBook extends JavaPlugin {
         lilyManager = new LilyManager(this);
     }
 
-    public void registerEvent(Listener listener) {
+    private void registerEvent(Listener listener) {
         this.getServer().getPluginManager().registerEvents(listener, this);
     }
 
     public void onDisable() {
         this.teleportOnRestart();
-
+        runnableManager.cancelRunnables();
     }
 
     private void teleportOnRestart() {
