@@ -16,6 +16,10 @@ public class AdminChatCommand extends LilyCommand {
     @Override
     public boolean execute(LilyBook instance, LilyPlayer lilyPlayer, final CommandSender commandSender, Command command, String[] args) {
         if (args.length == 0) {
+            if (lilyPlayer == null) {
+                StringManager.sendMessage(commandSender, "&cSorry, this command is only executable via players in-game.");
+                return true;
+            }
             if (lilyPlayer.isStaffChat()) {
                 lilyPlayer.setStaffChat(false);
                 StringManager.sendMessage(commandSender, "&bStaff chat was disabled for you.");

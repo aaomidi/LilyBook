@@ -2,8 +2,7 @@ package com.aaomidi.dev.lilybook.engine;
 
 
 import com.aaomidi.dev.lilybook.LilyBook;
-import com.aaomidi.dev.lilybook.engine.commands.DispatchCommand;
-import com.aaomidi.dev.lilybook.engine.commands.FindCommand;
+import com.aaomidi.dev.lilybook.engine.commands.*;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
 import org.bukkit.command.Command;
@@ -14,8 +13,8 @@ import org.bukkit.entity.Player;
 import java.util.HashMap;
 
 public class CommandsManager implements CommandExecutor {
-    private final LilyBook instance;
     private static HashMap<String, LilyCommand> commands;
+    private final LilyBook instance;
 
     public CommandsManager(LilyBook instance) {
         this.instance = instance;
@@ -24,13 +23,17 @@ public class CommandsManager implements CommandExecutor {
     }
 
     public void setupCommands() {
-        new DispatchCommand("dispatch", "lilybook.dispatch", true, "&3/dispatch &e(-s ServerName) [Command]");
-        new FindCommand("find", "lilybook.find", false, "&3/find &e[PlayerName]");
+        register(new AdminChatCommand("adminchat", "lilybook.adminchat", false, "&3/adminchat &e(Message)"));
+        register(new DispatchCommand("dispatch", "lilybook.dispatch", false, "&3/dispatch &e(-s ServerName) [Command]"));
+        register(new FindCommand("find", "lilybook.find", false, "&3/find &e[PlayerName]"));
+        register(new GListCommand("glist", "lilybook.glist", false, "&3/glist"));
+        register(new SendAllCommand("sendall", "lilybook.sendall", false, "&3/sendall &e[ServerName]"));
+        register(new SendCommand("send", "lilybook.send", false, "&3/send &e[PlayerName] &e[ServerName]"));
+        register(new ServerCommand("server", "lilybook.server", true, "&3/server &e(ServerName)"));
     }
 
-    public static void register(LilyCommand lilyCommand) {
+    public void register(LilyCommand lilyCommand) {
         commands.put(lilyCommand.getName(), lilyCommand);
-        LilyBook instance = LilyBook.getInstance();
         instance.getCommand(lilyCommand.getName()).setExecutor(instance.getCommandsManager());
     }
 

@@ -1,7 +1,6 @@
 package com.aaomidi.dev.lilybook.engine.commands;
 
 import com.aaomidi.dev.lilybook.LilyBook;
-import com.aaomidi.dev.lilybook.engine.CommandsManager;
 import com.aaomidi.dev.lilybook.engine.StringManager;
 import com.aaomidi.dev.lilybook.engine.modules.ChannelType;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
@@ -13,7 +12,6 @@ public class DispatchCommand extends LilyCommand {
 
     public DispatchCommand(String name, String permission, boolean forcePlayer, String usage) {
         super(name, permission, forcePlayer, usage);
-        CommandsManager.register(this);
     }
 
     @Override
