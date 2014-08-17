@@ -6,6 +6,7 @@ softdepened: [Essentials]
 commands:
   adminchat:
     description: Access admin chat
+    aliases: [staffchat, ac, sc]
   dispatch:
     description: Dispatch a command on all or some of the servers.
   find:

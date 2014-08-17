@@ -14,6 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.io.File;
 import java.util.Map;
 import java.util.logging.Level;
 
@@ -22,6 +23,8 @@ public class LilyBook extends JavaPlugin {
     private final static String LILY_CHANNEL = "MyLily.";
     @Getter
     private static String SERVER_NAME;
+    @Getter
+    private static Essentials essentials;
     @Getter
     private Connect connect;
     @Getter
@@ -32,11 +35,15 @@ public class LilyBook extends JavaPlugin {
     private RunnableManager runnableManager;
     @Getter
     private Caching caching;
-    @Getter
-    private static Essentials essentials;
+
+    public static LilyBook getInstance() {
+        return JavaPlugin.getPlugin(LilyBook.class);
+    }
 
     public void onLoad() {
-
+        if (!new File(this.getDataFolder(), "config.yml").exists()) {
+            this.saveDefaultConfig();
+        }
     }
 
     public void onEnable() {
@@ -44,7 +51,6 @@ public class LilyBook extends JavaPlugin {
         this.setupEssentials();
         this.registerClasses();
     }
-
 
     private void setupLily() {
         Plugin plugin = this.getServer().getPluginManager().getPlugin("LilyPad-Connect");
@@ -66,13 +72,8 @@ public class LilyBook extends JavaPlugin {
         essentials = (Essentials) plugin;
     }
 
-
     private void registerClasses() {
         lilyManager = new LilyManager(this);
-    }
-
-    public static LilyBook getInstance() {
-        return JavaPlugin.getPlugin(LilyBook.class);
     }
 
     public void registerEvent(Listener listener) {
