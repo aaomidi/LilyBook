@@ -1,9 +1,8 @@
 <center> 
 
-LilyBook
---------
+# LilyBook
 
- </center>
+</center>
 
 Thanks to these people for reviewing the code and helping me find the bugs!
 @L33m4n123 - Reviewing the code.
@@ -27,7 +26,8 @@ Thanks to these people for reviewing the code and helping me find the bugs!
  - /server [serverName] - Shows the server the player can connect to and teleports him there.
 
  ----------
- <center>
+
+<center>
  
 ## Permissions:
 
@@ -45,11 +45,13 @@ Thanks to these people for reviewing the code and helping me find the bugs!
 
 ----------
 
-Configuration
+<center>
+
+## Configuration
+
+</center>
 
 The configuration is very straight forward.
 Please read the comments in LilyBook's default config.yml.
 
 ----------
-
-
