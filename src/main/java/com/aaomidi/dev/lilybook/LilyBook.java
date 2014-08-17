@@ -91,6 +91,7 @@ public class LilyBook extends JavaPlugin {
         this.getServer().getPluginManager().registerEvents(listener, this);
     }
 
+    @Override
     public void onDisable() {
         this.teleportOnRestart();
         runnableManager.cancelRunnables();
