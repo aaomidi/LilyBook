@@ -51,16 +51,12 @@ public class LilyBook extends JavaPlugin {
     }
 
     public void onEnable() {
-        configReader = new ConfigReader(this, this.getConfig());
-        lilyManager = new LilyManager(this);
-        caching = new Caching(this);
-        runnableManager = new RunnableManager(this);
-        commandsManager = new CommandsManager(this);
-        registerEvent(new ConnectionEvent(this));
-        registerEvent(new TalkEvent(this));
         this.setupLily();
         this.setupEssentials();
         this.registerClasses();
+        registerEvent(new ConnectionEvent(this));
+        registerEvent(new TalkEvent(this));
+
     }
 
     private void setupLily() {
@@ -84,7 +80,11 @@ public class LilyBook extends JavaPlugin {
     }
 
     private void registerClasses() {
+        configReader = new ConfigReader(this, this.getConfig());
         lilyManager = new LilyManager(this);
+        caching = new Caching(this);
+        runnableManager = new RunnableManager(this);
+        commandsManager = new CommandsManager(this);
     }
 
     private void registerEvent(Listener listener) {
