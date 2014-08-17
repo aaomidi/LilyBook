@@ -24,8 +24,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LilyManager {
-    private final LilyBook instance;
     private static HashMap<String, LilyEvent> lilyEvents;
+    private final LilyBook instance;
 
     public LilyManager(LilyBook instance) {
         this.instance = instance;
@@ -39,13 +39,13 @@ public class LilyManager {
     }
 
     private void setupEvents() {
-        new AdminChatEvent(ChannelType.ADMIN_CHAT_MESSAGE);
-        new DispatchEvent(ChannelType.DISPATCH_COMMAND);
-        new SendPlayersEvent(ChannelType.PLAYER_LIST);
-        new SendStaffEvent(ChannelType.STAFF_LIST);
+        register(new AdminChatEvent(ChannelType.ADMIN_CHAT_MESSAGE));
+        register(new DispatchEvent(ChannelType.DISPATCH_COMMAND));
+        register(new SendPlayersEvent(ChannelType.PLAYER_LIST));
+        register(new SendStaffEvent(ChannelType.STAFF_LIST));
     }
 
-    public static void register(LilyEvent lilyEvent) {
+    public void register(LilyEvent lilyEvent) {
         String lilyChannel = lilyEvent.getChannelType().toString();
         lilyEvents.put(lilyChannel, lilyEvent);
     }
