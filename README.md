@@ -49,7 +49,7 @@ Thanks to these people for reviewing the code and helping me find the bugs!
 
 <center>
 
-## Configuration
+## Configuration:
 
 </center>
 
