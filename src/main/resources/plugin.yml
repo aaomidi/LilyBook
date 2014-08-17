@@ -1,0 +1,34 @@
+name: LilyBook
+version: 1.0 Fox
+main: com.aaomidi.dev.lilybook.LilyBook
+author: aaomidi
+softdepened: [Essentials]
+commands:
+  adminchat:
+    description: Access admin chat
+  dispatch:
+    description: Dispatch a command on all or some of the servers.
+  find:
+    description: Find a player on the network.
+  glist:
+    description: List all the players connected to the proxy.
+  sendall:
+    description: Sends all players to a server.
+  send:
+    description: Sends a player to a server.
+  server:
+    description: Sends the player to a server.
+permissions:
+  lilybook.*:
+    description: All the permissions for this plugin.
+    children:
+      lilybook.adminchat: true
+      lilybook.dispatch: true
+      lilybook.find: true
+      lilybook.glist: true
+      lilybook.sendall: true
+      lilybook.send: true
+      lilybook.server: true
+      lilybook.notify: true
+      lilybook.stafflist: true
+
