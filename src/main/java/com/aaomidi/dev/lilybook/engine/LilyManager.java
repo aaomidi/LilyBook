@@ -24,8 +24,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LilyManager {
-    private static HashMap<String, LilyEvent> lilyEvents;
     private final LilyBook instance;
+    private HashMap<String, LilyEvent> lilyEvents;
 
     public LilyManager(LilyBook instance) {
         this.instance = instance;

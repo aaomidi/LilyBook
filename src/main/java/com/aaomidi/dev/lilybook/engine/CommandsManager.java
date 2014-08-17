@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.logging.Level;
 
 public class CommandsManager implements CommandExecutor {
-    private static HashMap<String, LilyCommand> commands;
     private final LilyBook instance;
+    private HashMap<String, LilyCommand> commands;
 
     public CommandsManager(LilyBook instance) {
         this.instance = instance;
