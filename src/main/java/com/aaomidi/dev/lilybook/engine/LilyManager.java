@@ -2,13 +2,19 @@ package com.aaomidi.dev.lilybook.engine;
 
 
 import com.aaomidi.dev.lilybook.LilyBook;
-import com.aaomidi.dev.lilybook.engine.lilyevents.ReceivePlayersEvents;
+import com.aaomidi.dev.lilybook.engine.lilyevents.AdminChatEvent;
+import com.aaomidi.dev.lilybook.engine.lilyevents.DispatchEvent;
+import com.aaomidi.dev.lilybook.engine.lilyevents.SendPlayersEvent;
+import com.aaomidi.dev.lilybook.engine.modules.Callback;
 import com.aaomidi.dev.lilybook.engine.modules.ChannelType;
 import com.aaomidi.dev.lilybook.engine.modules.LilyEvent;
 import lilypad.client.connect.api.event.EventListener;
 import lilypad.client.connect.api.event.MessageEvent;
+import lilypad.client.connect.api.event.ServerAddEvent;
 import lilypad.client.connect.api.request.impl.MessageRequest;
 import lilypad.client.connect.api.request.impl.RedirectRequest;
+import lilypad.client.connect.api.result.FutureResult;
+import lilypad.client.connect.api.result.StatusCode;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
@@ -32,7 +38,9 @@ public class LilyManager {
     }
 
     private void setupEvents() {
-        new ReceivePlayersEvents(ChannelType.SEND_PLAYER_LIST);
+        new AdminChatEvent(ChannelType.ADMIN_CHAT_MESSAGE);
+        new DispatchEvent(ChannelType.DISPATCH_COMMAND);
+        new SendPlayersEvent(ChannelType.SEND_PLAYER_LIST);
     }
 
     public static void register(LilyEvent lilyEvent) {
@@ -52,6 +60,16 @@ public class LilyManager {
             }
         } catch (Exception ex) {
             throw new RuntimeException("Error when listening to Lilypad messages." + ex);
+        }
+    }
+
+    @EventListener
+    public void onServerAdd(ServerAddEvent event) {
+        try {
+            String serverName = event.getServer();
+            instance.getRunnableManager().getPlayerListSendRunnable().runTaskAsynchronously(instance);
+        } catch (Exception ex) {
+            throw new RuntimeException("Error when listening to ServerAddEvent." + ex);
         }
     }
 
@@ -92,12 +110,31 @@ public class LilyManager {
         }.runTaskAsynchronously(instance);
     }
 
-    public void teleportRequest(final String playerName, final String serverName) {
-        RedirectRequest request = new RedirectRequest(serverName, playerName);
+    public boolean teleportRequest(final String playerName, final String serverName) {
         try {
-            instance.getConnect().request(request);
+            RedirectRequest request = new RedirectRequest(serverName, playerName);
+            FutureResult future = instance.getConnect().request(request);
+            if (future.await().getStatusCode().equals(StatusCode.SUCCESS)) {
+                return true;
+            }
+            return false;
         } catch (Exception ex) {
             throw new RuntimeException("Error whilst redirecting a player." + ex);
         }
+    }
+
+    public void asyncTeleportRequest(final String playerName, final String serverName, final Callback<Boolean> callback) {
+        new BukkitRunnable() {
+            @Override
+            public void run() {
+                final boolean result = teleportRequest(playerName, serverName);
+                new BukkitRunnable() {
+                    @Override
+                    public void run() {
+                        callback.execute(result);
+                    }
+                }.runTask(instance);
+            }
+        }.runTaskAsynchronously(instance);
     }
 }

@@ -2,7 +2,8 @@ package com.aaomidi.dev.lilybook.engine;
 
 
 import com.aaomidi.dev.lilybook.LilyBook;
-import com.aaomidi.dev.lilybook.engine.objects.LilyPlayers;
+import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
+import com.aaomidi.dev.lilybook.engine.objects.ProxyPlayers;
 import com.google.common.collect.MapMaker;
 import lombok.Getter;
 
@@ -14,7 +15,9 @@ import java.util.regex.Pattern;
 public class Caching {
     private final LilyBook instance;
     @Getter
-    private static ConcurrentMap<String, LilyPlayers> networkPlayersMap;
+    private static ConcurrentMap<String, ProxyPlayers> networkPlayersMap;
+    @Getter
+    private static ConcurrentMap<String, LilyPlayer> lilyPlayersMap;
     private static Pattern pattern;
 
     public Caching(LilyBook instance) {
@@ -24,7 +27,12 @@ public class Caching {
 
     public void init() {
         networkPlayersMap = new MapMaker().concurrencyLevel(3).makeMap();
+        lilyPlayersMap = new MapMaker().concurrencyLevel(3).makeMap();
         pattern = Pattern.compile(":");
+    }
+
+    public void cleanUp(String playerName) {
+        lilyPlayersMap.remove(playerName);
     }
 
     public static void proxyPlayersManagement(String message, String sender) {
@@ -32,37 +40,37 @@ public class Caching {
         List<String> players = Arrays.asList(messageArray);
         Character action = players.get(0).charAt(0);
         players.remove(0);
-        ConcurrentMap<String, LilyPlayers> networkPlayersMap = Caching.getNetworkPlayersMap();
+        ConcurrentMap<String, ProxyPlayers> networkPlayersMap = Caching.getNetworkPlayersMap();
         switch (action) {
             case '+':
                 if (players.size() > 0) {
                     if (!networkPlayersMap.containsKey(sender)) {
-                        networkPlayersMap.put(sender, new LilyPlayers(sender));
+                        networkPlayersMap.put(sender, new ProxyPlayers(sender));
                     }
-                    LilyPlayers lilyPlayers = networkPlayersMap.get(sender);
+                    ProxyPlayers proxyPlayers = networkPlayersMap.get(sender);
                     for (String playerName : players) {
-                        lilyPlayers.addPlayer(playerName);
+                        proxyPlayers.addPlayer(playerName);
                     }
                 }
             case '-':
                 if (players.size() > 0) {
                     if (!networkPlayersMap.containsKey(sender)) {
-                        networkPlayersMap.put(sender, new LilyPlayers(sender));
+                        networkPlayersMap.put(sender, new ProxyPlayers(sender));
                     }
-                    LilyPlayers lilyPlayers = networkPlayersMap.get(sender);
+                    ProxyPlayers proxyPlayers = networkPlayersMap.get(sender);
                     for (String playerName : players) {
-                        lilyPlayers.removePlayer(playerName);
+                        proxyPlayers.removePlayer(playerName);
                     }
                 }
             case '!':
                 if (players.size() > 0) {
                     if (!networkPlayersMap.containsKey(sender)) {
-                        networkPlayersMap.put(sender, new LilyPlayers(sender));
+                        networkPlayersMap.put(sender, new ProxyPlayers(sender));
                     }
-                    LilyPlayers lilyPlayers = networkPlayersMap.get(sender);
-                    lilyPlayers.resetPlayers();
+                    ProxyPlayers proxyPlayers = networkPlayersMap.get(sender);
+                    proxyPlayers.resetPlayers();
                     for (String playerName : players) {
-                        lilyPlayers.addPlayer(playerName);
+                        proxyPlayers.addPlayer(playerName);
                     }
                 }
         }

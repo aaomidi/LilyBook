@@ -5,6 +5,7 @@ import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.commands.DispatchCommand;
 import com.aaomidi.dev.lilybook.engine.commands.FindCommand;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
+import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -35,6 +36,8 @@ public class CommandsManager implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String commandLabel, String[] args) {
+        LilyPlayer lilyPlayer = null;
+        lilyPlayer = Caching.getLilyPlayersMap().get(commandSender.getName());
         if (commands.containsKey(command.getName())) {
             LilyCommand lilyCommand = commands.get(command.getName());
             if (!commandSender.hasPermission(lilyCommand.getPermission())) {
@@ -46,10 +49,10 @@ public class CommandsManager implements CommandExecutor {
                     StringManager.sendMessage(commandSender, "&cSorry, this command is only executable via players in-game.");
                     return true;
                 }
-                return lilyCommand.execute(instance, commandSender, command, args);
+                return lilyCommand.execute(instance, lilyPlayer, commandSender, command, args);
             }
 
-            return lilyCommand.execute(instance, commandSender, command, args);
+            return lilyCommand.execute(instance, lilyPlayer, commandSender, command, args);
         }
         return true;
     }

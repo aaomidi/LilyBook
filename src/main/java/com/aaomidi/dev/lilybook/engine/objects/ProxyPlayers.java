@@ -6,13 +6,13 @@ import lombok.Getter;
 import java.util.HashSet;
 import java.util.Iterator;
 
-public class LilyPlayers implements Iterable<String> {
+public class ProxyPlayers implements Iterable<String> {
     @Getter
     private final HashSet<String> players;
     @Getter
     private final String serverName;
 
-    public LilyPlayers(String serverName) {
+    public ProxyPlayers(String serverName) {
         players = new HashSet<>();
         this.serverName = serverName;
     }

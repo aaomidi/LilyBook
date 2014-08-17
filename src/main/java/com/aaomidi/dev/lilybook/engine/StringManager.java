@@ -1,7 +1,9 @@
 package com.aaomidi.dev.lilybook.engine;
 
 
+import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.configuration.ConfigReader;
+import com.aaomidi.dev.lilybook.engine.modules.ChannelType;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
 
@@ -42,5 +44,16 @@ public class StringManager {
      */
     public static void sendRawMessage(CommandSender sender, String message) {
         sender.sendMessage(colorize(message));
+    }
+
+    /**
+     * Sends a message formatted for StaffChat.
+     *
+     * @param sender  The sender.
+     * @param message The message to be sent.
+     */
+    public static void sendAdminChatMessage(String sender, String message) {
+        String formattedMessage = colorize(String.format("&8[&4&lS&8][&a%s&8][&6%s&8] &e%s", LilyBook.getSERVER_NAME(), sender, message));
+        LilyBook.getInstance().getLilyManager().asyncMessageRequest(ChannelType.ADMIN_CHAT_MESSAGE, formattedMessage);
     }
 }

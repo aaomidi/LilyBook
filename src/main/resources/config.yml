@@ -1,2 +1,8 @@
 General-Settings:
   Prefix: "&6[&5LilyEssentials&6]"
+Modular-Settings:
+  Teleport-On-Restart:
+    Active: true
+    Server: "hub"
+  Send-Player-List:
+    Active: true

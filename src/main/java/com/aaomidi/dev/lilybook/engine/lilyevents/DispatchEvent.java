@@ -19,7 +19,7 @@ public class DispatchEvent extends LilyEvent {
         if (instance.getServer().getOnlinePlayers() != null) {
             for (Player player : instance.getServer().getOnlinePlayers()) {
                 if (!player.hasPermission("lilybook.notify")) {
-                    return;
+                    continue;
                 }
                 StringManager.sendMessage(player, String.format("&bThe command &e%s &bexecuted from &e%s &b was successfully executed on the server.", message, sender));
             }

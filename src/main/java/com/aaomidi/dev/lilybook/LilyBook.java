@@ -1,13 +1,19 @@
 package com.aaomidi.dev.lilybook;
 
 
+import com.aaomidi.dev.lilybook.engine.Caching;
 import com.aaomidi.dev.lilybook.engine.CommandsManager;
 import com.aaomidi.dev.lilybook.engine.LilyManager;
+import com.aaomidi.dev.lilybook.engine.RunnableManager;
+import com.aaomidi.dev.lilybook.engine.configuration.ConfigReader;
 import lilypad.client.connect.api.Connect;
 import lombok.Getter;
+import org.bukkit.entity.Player;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.Map;
 import java.util.logging.Level;
 
 public class LilyBook extends JavaPlugin {
@@ -21,6 +27,10 @@ public class LilyBook extends JavaPlugin {
     private LilyManager lilyManager;
     @Getter
     private CommandsManager commandsManager;
+    @Getter
+    private RunnableManager runnableManager;
+    @Getter
+    private Caching caching;
 
     public void onLoad() {
 
@@ -31,9 +41,6 @@ public class LilyBook extends JavaPlugin {
         this.registerClasses();
     }
 
-    public void onDisable() {
-
-    }
 
     private void setupLily() {
         Plugin plugin = this.getServer().getPluginManager().getPlugin("LilyPad-Connect");
@@ -54,4 +61,25 @@ public class LilyBook extends JavaPlugin {
         return JavaPlugin.getPlugin(LilyBook.class);
     }
 
+    public void registerEvent(Listener listener) {
+        this.getServer().getPluginManager().registerEvents(listener, this);
+    }
+
+    public void onDisable() {
+        this.teleportOnRestart();
+
+    }
+
+    private void teleportOnRestart() {
+        Map<String, Object> restartSettings = ConfigReader.getRestartSettings();
+        if (!String.valueOf(restartSettings.get("Active")).equalsIgnoreCase("true")) {
+            return;
+        }
+        if (this.getServer().getOnlinePlayers() == null) {
+            return;
+        }
+        for (Player player : this.getServer().getOnlinePlayers()) {
+            lilyManager.teleportRequest(player.getName(), (String) restartSettings.get("Server"));
+        }
+    }
 }

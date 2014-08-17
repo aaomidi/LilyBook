@@ -8,9 +8,9 @@ import com.aaomidi.dev.lilybook.engine.modules.LilyEvent;
 import org.bukkit.scheduler.BukkitRunnable;
 
 
-public class ReceivePlayersEvents extends LilyEvent {
+public class SendPlayersEvent extends LilyEvent {
 
-    public ReceivePlayersEvents(ChannelType channelType) {
+    public SendPlayersEvent(ChannelType channelType) {
         super(channelType);
         LilyManager.register(this);
     }

@@ -5,7 +5,8 @@ import com.aaomidi.dev.lilybook.engine.Caching;
 import com.aaomidi.dev.lilybook.engine.CommandsManager;
 import com.aaomidi.dev.lilybook.engine.StringManager;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
-import com.aaomidi.dev.lilybook.engine.objects.LilyPlayers;
+import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
+import com.aaomidi.dev.lilybook.engine.objects.ProxyPlayers;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -22,7 +23,7 @@ public class FindCommand extends LilyCommand {
     }
 
     @Override
-    public boolean execute(LilyBook instance, final CommandSender commandSender, Command command, String[] args) {
+    public boolean execute(LilyBook instance, LilyPlayer lilyPlayer, final CommandSender commandSender, Command command, String[] args) {
         if (args.length == 0) {
             StringManager.sendMessage(commandSender, getUsage());
             return true;
@@ -33,17 +34,17 @@ public class FindCommand extends LilyCommand {
             return true;
         }
 
-        final ConcurrentMap<String, LilyPlayers> networkPlayersMap = Caching.getNetworkPlayersMap();
+        final ConcurrentMap<String, ProxyPlayers> networkPlayersMap = Caching.getNetworkPlayersMap();
 
         new BukkitRunnable() {
             final HashMap<String, String> possibleMatches = new HashMap<>();
 
             @Override
             public void run() {
-                for (LilyPlayers lilyPlayers : networkPlayersMap.values()) {
-                    for (String pName : lilyPlayers.getPlayers()) {
+                for (ProxyPlayers proxyPlayers : networkPlayersMap.values()) {
+                    for (String pName : proxyPlayers.getPlayers()) {
                         if (pName.toLowerCase().startsWith(playerName)) {
-                            possibleMatches.put(pName, lilyPlayers.getServerName());
+                            possibleMatches.put(pName, proxyPlayers.getServerName());
                         }
                     }
                 }
