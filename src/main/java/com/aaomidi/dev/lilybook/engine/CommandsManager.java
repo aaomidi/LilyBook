@@ -34,7 +34,6 @@ public class CommandsManager implements CommandExecutor {
     }
 
     private void register(LilyCommand lilyCommand) {
-        System.out.println(lilyCommand.getName());
         commands.put(lilyCommand.getName(), lilyCommand);
         instance.getCommand(lilyCommand.getName()).setExecutor(this);
     }
