@@ -4,8 +4,12 @@ package com.aaomidi.dev.lilybook.engine;
 import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.configuration.ConfigReader;
 import com.aaomidi.dev.lilybook.engine.modules.ChannelType;
+import com.aaomidi.dev.lilybook.engine.objects.ProxyPlayers;
+import com.aaomidi.dev.lilybook.engine.objects.ProxyStaff;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+
+import java.util.Map;
 
 public class StringManager {
     /**
@@ -55,5 +59,30 @@ public class StringManager {
     public static void sendAdminChatMessage(String sender, String message) {
         String formattedMessage = colorize(String.format("&8[&4&lS&8][&a%s&8][&6%s&8] &e%s", LilyBook.getSERVER_NAME(), sender, message));
         LilyBook.getInstance().getLilyManager().asyncMessageRequest(ChannelType.ADMIN_CHAT_MESSAGE, formattedMessage);
+    }
+
+    public static String getGlobalListMessage() {
+        StringBuilder sb = new StringBuilder();
+        for (Map.Entry<String, ProxyPlayers> entry : Caching.getNetworkPlayersMap().entrySet()) {
+            sb.append(String.format("&8&l[&b%s&8&l] &r&e%d\n", entry.getKey(), entry.getValue().getPlayersCount()));
+        }
+        int x = 1;
+        int y = 1;
+        sb.append("&bCurrent staff online are: ");
+        for (Map.Entry<String, ProxyStaff> entry : Caching.getNetworkStaffMap().entrySet()) {
+            for (String playerName : entry.getValue().getStaff()) {
+                sb.append(String.format("&e%s&8(&b%s&8)", playerName, entry.getKey()));
+                if (x == Caching.getNetworkStaffMap().entrySet().size()) {
+                    if (y == entry.getValue().getStaffCount()) {
+                        sb.append("&b.");
+                    } else {
+                        sb.append("&b, ");
+                    }
+                    y++;
+                }
+            }
+            x++;
+        }
+        return sb.toString();
     }
 }
