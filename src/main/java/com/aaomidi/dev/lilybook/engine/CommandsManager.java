@@ -11,6 +11,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
+import java.util.logging.Level;
 
 public class CommandsManager implements CommandExecutor {
     private static HashMap<String, LilyCommand> commands;
@@ -22,7 +23,7 @@ public class CommandsManager implements CommandExecutor {
         this.setupCommands();
     }
 
-    public void setupCommands() {
+    private void setupCommands() {
         register(new AdminChatCommand("adminchat", "lilybook.adminchat", false, "&3/adminchat &e(Message)"));
         register(new DispatchCommand("dispatch", "lilybook.dispatch", false, "&3/dispatch &e(-s ServerName) [Command]"));
         register(new FindCommand("find", "lilybook.find", false, "&3/find &e[PlayerName]"));
@@ -32,9 +33,9 @@ public class CommandsManager implements CommandExecutor {
         register(new ServerCommand("server", "lilybook.server", true, "&3/server &e(ServerName)"));
     }
 
-    public void register(LilyCommand lilyCommand) {
+    private void register(LilyCommand lilyCommand) {
         commands.put(lilyCommand.getName(), lilyCommand);
-        instance.getCommand(lilyCommand.getName()).setExecutor(instance.getCommandsManager());
+        instance.getCommand(lilyCommand.getName()).setExecutor(this);
     }
 
     @Override
@@ -56,6 +57,8 @@ public class CommandsManager implements CommandExecutor {
             }
 
             return lilyCommand.execute(instance, lilyPlayer, commandSender, command, args);
+        } else {
+            instance.getLogger().log(Level.SEVERE, "Command wasn't found in the commands map.");
         }
         return true;
     }
