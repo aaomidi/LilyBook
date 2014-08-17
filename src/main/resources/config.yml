@@ -1,8 +1,13 @@
 General-Settings:
+  # This prefix is used when sending messages from the plugin.
+  # You can set it to null to have no messages.
   Prefix: "&6[&5LilyEssentials&6]"
 Modular-Settings:
+  # Shall this plugin teleport players on Restart?
   Teleport-On-Restart:
     Active: true
+    # Server to teleport players to.
     Server: "hub"
+  # Shall this server send it's playerlist to the proxy?
   Send-Player-List:
     Active: true
