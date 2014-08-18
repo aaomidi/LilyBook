@@ -52,7 +52,8 @@ Features:
  - lilybook.server - Allows the use of /server.
  - lilybook.notify - People with this permission will be notified when someone does /dispatch.
  - lilybook.stafflist - People with this permission will be considered staff in /glist.
-
+ - lilybook.socialspy - People with this permission will be able to read the messages sent in /msg.
+ 
 ----------
 
 ## Configuration:
