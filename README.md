@@ -5,13 +5,17 @@ A big thanks to these people for donating and supporting the development of the 
 
 **CraftShark** - **play.craftshark.net**
 
+**CowCraft** - **mc.cowcraft.net**
+
 Thanks to these people for reviewing the code and helping me find the bugs!
 
 @L33m4n123 - Reviewing the code.
 
-@edyyy - Testing the plugin. - cowcraft.net
+@edyyy - Testing the plugin. - mc.cowcraft.net
 
 @roastnewt - Testing the plugin. - minepure.com
+
+@shawshark - Testing the plugin. - play.craftshark.net 
 
 ----------
 
