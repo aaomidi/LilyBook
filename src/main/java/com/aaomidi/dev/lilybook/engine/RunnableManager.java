@@ -39,7 +39,6 @@ public class RunnableManager {
                 sb.append("!");
                 if (instance.getServer().getOnlinePlayers() == null) {
                     sb.append(":");
-
                 } else {
                     for (Player player : instance.getServer().getOnlinePlayers()) {
                         sb.append(":");
@@ -60,22 +59,22 @@ public class RunnableManager {
                 sb.append("!");
                 if (instance.getServer().getOnlinePlayers() == null) {
                     sb.append(":");
-                    return;
-                }
-                for (Player player : instance.getServer().getOnlinePlayers()) {
-                    if (!player.hasPermission("lilybook.stafflist")) {
-                        continue;
-                    }
-                    Essentials essentials = LilyBook.getEssentials();
-                    if (essentials != null) {
-                        User user = LilyBook.getEssentials().getUser(player);
-                        if (user.isVanished()) {
+                } else {
+                    for (Player player : instance.getServer().getOnlinePlayers()) {
+                        if (!player.hasPermission("lilybook.stafflist")) {
                             continue;
                         }
+                        Essentials essentials = LilyBook.getEssentials();
+                        if (essentials != null) {
+                            User user = LilyBook.getEssentials().getUser(player);
+                            if (user.isVanished()) {
+                                continue;
+                            }
 
+                        }
+                        sb.append(":");
+                        sb.append(player.getName());
                     }
-                    sb.append(":");
-                    sb.append(player.getName());
                 }
                 instance.getLilyManager().asyncMessageRequest(ChannelType.STAFF_LIST, sb.toString());
             }
