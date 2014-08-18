@@ -24,9 +24,10 @@ public class TalkEvent implements Listener {
         Player player = event.getPlayer();
         String message = event.getMessage();
         LilyPlayer lilyPlayer = Caching.getLilyPlayersMap().get(player.getName());
-        if (lilyPlayer.isStaffChat()) {
-            event.setCancelled(true);
+        if (!lilyPlayer.isStaffChat()) {
+            return;
         }
+        event.setCancelled(true);
         StringManager.sendAdminChatMessage(player.getName(), message);
     }
 }
