@@ -17,6 +17,8 @@ Thanks to these people for reviewing the code and helping me find the bugs!
 
 @shawshark - Testing the plugin. - play.craftshark.net 
 
+@Wobbolino1 - Creating the beautiful logo! - mc.cowcraft.net
+
 ----------
 
 ## Commands:
