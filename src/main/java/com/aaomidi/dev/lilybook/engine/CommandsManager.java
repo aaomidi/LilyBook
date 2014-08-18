@@ -25,6 +25,7 @@ public class CommandsManager implements CommandExecutor {
 
     private void setupCommands() {
         register(new AdminChatCommand("adminchat", "lilybook.adminchat", false, "&3/adminchat &e(Message)"));
+        register(new AlertCommand("alert", "lilybook.alert", false, "&3/alert &e(-s ServerName) [Command]"));
         register(new DispatchCommand("dispatch", "lilybook.dispatch", false, "&3/dispatch &e(-s ServerName) [Command]"));
         register(new FindCommand("find", "lilybook.find", false, "&3/find &e[PlayerName]"));
         register(new GListCommand("glist", "lilybook.glist", false, "&3/glist"));

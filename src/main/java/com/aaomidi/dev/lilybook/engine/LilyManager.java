@@ -37,6 +37,7 @@ public class LilyManager {
 
     private void setupEvents() {
         register(new AdminChatEvent(ChannelType.ADMIN_CHAT_MESSAGE));
+        register(new AlertEvent(ChannelType.ALERT_SERVERS));
         register(new DispatchEvent(ChannelType.DISPATCH_COMMAND));
         register(new MsgEvent(ChannelType.MESSAGE_PLAYER));
         register(new SendPlayersEvent(ChannelType.PLAYER_LIST));

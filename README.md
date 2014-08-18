@@ -20,9 +20,9 @@ Thanks to these people for reviewing the code and helping me find the bugs!
 ----------
 
 ## Commands:
-
  - /adminchat - Toggles the adminchat to active.
  - /adminchat [message] - Sends a message to the admin channel.
+ - /alert - Sends a message to one/all servers. To specify a server use -s (servername)
  - /dispatch - Dispatches a command to one/all servers. To specify a server use -s (servername).
  - /find [playerName] - Looks for a player on the network, the name can be partially correct and it will still find the player.
  - /glist - Shows the global list of the server.

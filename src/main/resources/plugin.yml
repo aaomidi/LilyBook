@@ -30,6 +30,7 @@ permissions:
     description: All the permissions for this plugin.
     children:
       lilybook.adminchat: true
+      lilybook.alert: true
       lilybook.dispatch: true
       lilybook.find: true
       lilybook.message: true
