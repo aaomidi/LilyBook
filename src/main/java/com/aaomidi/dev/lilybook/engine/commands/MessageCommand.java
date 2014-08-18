@@ -33,7 +33,7 @@ public class MessageCommand extends LilyCommand {
                     StringManager.sendMessage(commandSender, "&cThat player is not online");
                 }
                 String message = "";
-                for (int i = 2; i < args.length; i++) {
+                for (int i = 1; i < args.length; i++) {
                     String arg = args[i];
                     arg = arg.replace(":", "");
                     message += arg + " ";

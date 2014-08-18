@@ -15,7 +15,7 @@ commands:
     description: List all the players connected to the proxy.
   message:
     description: Sends a cross server /msg.
-    aliases: [msg, m, pm, tell]
+    aliases: [msg, m, pm, tell, w, whisper]
   sendall:
     description: Sends all players to a server.
   send:
