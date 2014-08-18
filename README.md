@@ -35,7 +35,7 @@ Thanks to these people for reviewing the code and helping me find the bugs!
 Features:
 
 + /glist will not show vanished players (Essentials).
-+ /message will not send a message to a player if that player has ignored the sender (Essentials)
++ /message will not send a message to a player if that player has ignored the sender (Essentials).
 + Teleports players to a specified server when the server is shutting down or reloading.
 
  ----------
