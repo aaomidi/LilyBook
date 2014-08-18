@@ -13,6 +13,8 @@ Thanks to these people for reviewing the code and helping me find the bugs!
 
 @L33m4n123 - Reviewing the code.
 
+@DarkSeraphim - Reviewing the code.
+
 @edyyy - Testing the plugin. - mc.cowcraft.net
 
 @roastnewt - Testing the plugin. - minepure.com
