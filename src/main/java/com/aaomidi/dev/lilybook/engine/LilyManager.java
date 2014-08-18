@@ -83,8 +83,9 @@ public class LilyManager {
     public void messageRequest(final ChannelType channelType, final String message, final String... servers) {
         try {
             MessageRequest request = null;
-            List<String> serverList = new ArrayList<>();
+            List<String> serverList = null;
             if (servers != null) {
+                serverList = new ArrayList<>();
                 Collections.addAll(serverList, servers);
             }
             request = new MessageRequest(serverList, channelType.toString(), message);

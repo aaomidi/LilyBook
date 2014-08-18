@@ -32,12 +32,9 @@ public class DispatchCommand extends LilyCommand {
                 return true;
             } else {
                 serverName = args[1];
-                int x = 0;
-                for (String arg : args) {
-                    if (x >= 2) {
-                        cmd += arg + " ";
-                    }
-                    x++;
+                for (int i = 2; i < args.length; i++) {
+                    String arg = args[i];
+                    cmd += arg + " ";
                 }
             }
         } else {
