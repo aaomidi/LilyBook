@@ -19,7 +19,7 @@ import lilypad.client.connect.api.result.StatusCode;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -84,12 +84,12 @@ public class LilyManager {
      */
     public void messageRequest(final ChannelType channelType, final String message, final String... servers) {
         try {
-            MessageRequest request;
-            List<String> serverLists = new ArrayList<>();
+            MessageRequest request = null;
+            List<String> serverList = new ArrayList<>();
             if (servers != null) {
-                serverLists.addAll(Arrays.asList(servers));
+                Collections.addAll(serverList, servers);
             }
-            request = new MessageRequest(serverLists, channelType.toString(), message);
+            request = new MessageRequest(serverList, channelType.toString(), message);
             instance.getConnect().request(request);
         } catch (Exception ex) {
             throw new RuntimeException("Error while sending a message request." + ex);
