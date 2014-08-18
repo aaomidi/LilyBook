@@ -69,4 +69,4 @@ Please read the comments in LilyBook's default config.yml.
 
 ----------
 
-  [1]: https://raw.githubusercontent.com/aaomidi/LilyBook/master/logo/4Amir.png
+  [1]: https://raw.githubusercontent.com/aaomidi/LilyBook/master/logo/logo.png
