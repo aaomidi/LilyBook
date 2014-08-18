@@ -1,5 +1,5 @@
 name: LilyBook
-version: 1.0 Fox
+version: ${project.version}
 main: com.aaomidi.dev.lilybook.LilyBook
 author: aaomidi
 softdepened: [Essentials]

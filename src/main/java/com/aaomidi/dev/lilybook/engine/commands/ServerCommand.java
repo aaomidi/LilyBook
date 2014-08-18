@@ -7,6 +7,7 @@ import com.aaomidi.dev.lilybook.engine.StringManager;
 import com.aaomidi.dev.lilybook.engine.modules.Callback;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
+import com.aaomidi.dev.lilybook.engine.objects.ProxyPlayers;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
@@ -21,12 +22,12 @@ public class ServerCommand extends LilyCommand {
             StringBuilder sb = new StringBuilder();
             sb.append("&bServers currently online are: ");
             int x = 1;
-            for (String serverName : Caching.getNetworkPlayersMap().keySet()) {
-                sb.append(String.format("&e%s", serverName));
+            for (ProxyPlayers proxyPlayers : Caching.getNetworkPlayersMap().values()) {
+                sb.append(String.format("&e%s &8(&b%d&8)", proxyPlayers.getServerName(), proxyPlayers.getPlayersCount()));
                 if (x == Caching.getNetworkPlayersMap().size()) {
-                    sb.append("&b.");
+                    sb.append("&e.");
                 }
-                sb.append("&b, ");
+                sb.append("&e, ");
                 x++;
             }
             StringManager.sendMessage(commandSender, sb.toString());
