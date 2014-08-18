@@ -22,7 +22,7 @@ public class ConnectionEvent implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        LilyPlayer lilyPlayer = new LilyPlayer(player.getName(), false);
+        LilyPlayer lilyPlayer = new LilyPlayer(player.getName(), false, null);
         Caching.getLilyPlayersMap().put(player.getName(), lilyPlayer);
     }
 

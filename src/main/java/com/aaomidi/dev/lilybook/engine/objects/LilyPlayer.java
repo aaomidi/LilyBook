@@ -12,6 +12,9 @@ public class LilyPlayer {
     @Getter
     @Setter
     private boolean isStaffChat;
+    @Getter
+    @Setter
+    private String conversee;
 
     @Override
     public String toString() {

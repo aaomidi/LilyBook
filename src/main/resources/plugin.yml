@@ -13,6 +13,9 @@ commands:
     description: Find a player on the network.
   glist:
     description: List all the players connected to the proxy.
+  message:
+    description: Sends a cross server /msg.
+    aliases: [msg, m, pm, tell]
   sendall:
     description: Sends all players to a server.
   send:
@@ -26,10 +29,12 @@ permissions:
       lilybook.adminchat: true
       lilybook.dispatch: true
       lilybook.find: true
+      lilybook.message: true
       lilybook.glist: true
       lilybook.sendall: true
       lilybook.send: true
       lilybook.server: true
       lilybook.notify: true
       lilybook.stafflist: true
+      lilybook.socialspy: true
 

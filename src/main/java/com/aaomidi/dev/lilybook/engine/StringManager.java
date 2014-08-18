@@ -61,6 +61,15 @@ public class StringManager {
         LilyBook.getInstance().getLilyManager().asyncMessageRequest(ChannelType.ADMIN_CHAT_MESSAGE, formattedMessage);
     }
 
+    public static String getCrossServerMessage(String server, String message, String sender) {
+        return colorize(String.format("&8&l[&b%s&8&l][&e%s&8&l]&r %s", server, sender, message));
+    }
+
+    public static String getStaffCrossServerMessage(String server, String message, String sender, String receiver) {
+        return colorize(String.format("&8&l[&b%s&8&l][&e%s&8&l][&b%s&8&l]&r %s", server, sender, receiver, message));
+
+    }
+
     public static String getGlobalListMessage() {
         StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, ProxyPlayers> entry : Caching.getNetworkPlayersMap().entrySet()) {

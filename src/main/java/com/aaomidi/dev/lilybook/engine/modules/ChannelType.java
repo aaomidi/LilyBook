@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 public enum ChannelType {
     ADMIN_CHAT_MESSAGE("AdminChatMessage"),
     DISPATCH_COMMAND("DispatchCommand"),
+    MESSAGE_PLAYER("MessagePlayer"),
     PLAYER_LIST("PlayerList"),
     STAFF_LIST("StaffList");
 
