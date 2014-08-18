@@ -1,6 +1,8 @@
 
 # LilyBook
 
+![LilyBook Logo][1]
+
 A big thanks to these people for donating and supporting the development of the plugin!
 
 **CraftShark** - **play.craftshark.net**
@@ -64,3 +66,5 @@ The configuration is very straight forward.
 Please read the comments in LilyBook's default config.yml.
 
 ----------
+
+  [1]: https://raw.githubusercontent.com/aaomidi/LilyBook/master/logo/4Amir.png
