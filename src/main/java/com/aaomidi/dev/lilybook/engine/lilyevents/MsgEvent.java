@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
-public class MessageEvent extends LilyEvent {
-    public MessageEvent(ChannelType channelType) {
+public class MsgEvent extends LilyEvent {
+    public MsgEvent(ChannelType channelType) {
         super(channelType);
     }
 
