@@ -103,6 +103,7 @@ public class Caching {
                     networkStaffMap.put(sender, new ProxyStaff(sender));
                 }
                 ProxyStaff proxyStaff = networkStaffMap.get(sender);
+                proxyStaff.resetStaff();
                 if (players.size() > 0) {
                     for (String playerName : players) {
                         proxyStaff.addStaff(playerName);
