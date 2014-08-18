@@ -29,6 +29,7 @@ public class CommandsManager implements CommandExecutor {
         register(new FindCommand("find", "lilybook.find", false, "&3/find &e[PlayerName]"));
         register(new GListCommand("glist", "lilybook.glist", false, "&3/glist"));
         register(new MessageCommand("message", "lilybook.message", true, "&3/msg &e[PlayerName] [Message]"));
+        register(new ReplyCommand("reply", "lilybook.message", true, "&3/reply &e[Message]"));
         register(new SendAllCommand("sendall", "lilybook.sendall", false, "&3/sendall &e[ServerName]"));
         register(new SendCommand("send", "lilybook.send", false, "&3/send &e[PlayerName] &e[ServerName]"));
         register(new ServerCommand("server", "lilybook.server", true, "&3/server &e(ServerName)"));

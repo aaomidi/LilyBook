@@ -16,6 +16,9 @@ commands:
   message:
     description: Sends a cross server /msg.
     aliases: [msg, m, pm, tell, w, whisper]
+  reply:
+    description: Replies to a cross server message.
+    aliases: [r]
   sendall:
     description: Sends all players to a server.
   send:

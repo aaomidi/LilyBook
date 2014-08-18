@@ -66,7 +66,7 @@ public class StringManager {
     }
 
     public static String getStaffCrossServerMessage(String server, String message, String sender, String receiver) {
-        return colorize(String.format("&8&l[&b%s&8&l][&e%s&8&l][&b%s&8&l]&r %s", server, sender, receiver, message));
+        return colorize(String.format("&8&l[&eSocialSpy&8&l][&b%s&8&l][&e%s&8&l][&b%s&8&l]&r %s", server, sender, receiver, message));
 
     }
 

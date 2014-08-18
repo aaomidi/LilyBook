@@ -70,7 +70,6 @@ public class RunnableManager {
                             if (user.isVanished()) {
                                 continue;
                             }
-
                         }
                         sb.append(":");
                         sb.append(player.getName());
