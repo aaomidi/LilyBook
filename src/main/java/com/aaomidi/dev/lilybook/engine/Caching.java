@@ -11,7 +11,6 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.concurrent.ConcurrentMap;
-import java.util.regex.Pattern;
 
 public class Caching {
     @Getter
@@ -20,7 +19,6 @@ public class Caching {
     private static ConcurrentMap<String, ProxyStaff> networkStaffMap;
     @Getter
     private static ConcurrentMap<String, LilyPlayer> lilyPlayersMap;
-    private static Pattern pattern;
     private final LilyBook instance;
 
     public Caching(LilyBook instance) {
@@ -29,7 +27,7 @@ public class Caching {
     }
 
     public static void proxyPlayersManagement(String message, String sender) {
-        String[] messageArray = pattern.split(message);
+        String[] messageArray = message.split(":");
         ArrayList<String> players = new ArrayList<>(Arrays.asList(messageArray));
         Character action = players.get(0).charAt(0);
         players.remove(0);
@@ -72,7 +70,7 @@ public class Caching {
     }
 
     public static void proxyStaffManagement(String message, String sender) {
-        String[] messageArray = pattern.split(message);
+        String[] messageArray = message.split(":");
         ArrayList<String> players = new ArrayList<>(Arrays.asList(messageArray));
         Character action = players.get(0).charAt(0);
         players.remove(0);
@@ -117,7 +115,6 @@ public class Caching {
         networkPlayersMap = new MapMaker().concurrencyLevel(3).makeMap();
         networkStaffMap = new MapMaker().concurrencyLevel(3).makeMap();
         lilyPlayersMap = new MapMaker().concurrencyLevel(3).makeMap();
-        pattern = Pattern.compile(":");
     }
 
     public void cleanUp(String playerName) {
