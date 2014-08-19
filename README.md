@@ -57,8 +57,8 @@ Features:
  - lilybook.sendall - Allows the use of /sendall.
  - lilybook.send - Allows the use of /send.
  - lilybook.server - Allows the use of /server.
- - lilybook.notify - People with this permission will be notified when someone does /dispatch.
- - lilybook.stafflist - People with this permission will be considered staff in /glist.
+ - lilybook.notify - People with this permission will be notified when someone does /dispatch and/or a staff join/leaves.
+ - lilybook.stafflist - People with this permission will be considered staff in /glist and will send join/leave notifications.
  - lilybook.socialspy - People with this permission will be able to read the messages sent in /msg.
  
 ----------

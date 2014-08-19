@@ -34,7 +34,7 @@ public class ConnectionEvent implements Listener {
         Player player = event.getPlayer();
         instance.getCaching().cleanUp(player.getName());
     }
-    
+
     @EventHandler(priority = EventPriority.MONITOR)
     public void onStaffJoin(PlayerJoinEvent event) {
         if (!String.valueOf(ConfigReader.getConnectionNotifySettings().get("Active")).equalsIgnoreCase("true")) {
@@ -44,7 +44,7 @@ public class ConnectionEvent implements Listener {
             return;
         }
         Player player = event.getPlayer();
-        if (!player.hasPermission("lilybook.staff")) {
+        if (!player.hasPermission("lilybook.stafflist")) {
             return;
         }
         String message = String.format("&e%s &bjoined the server!", player.getName());
@@ -60,7 +60,7 @@ public class ConnectionEvent implements Listener {
             return;
         }
         Player player = event.getPlayer();
-        if (!player.hasPermission("lilybook.staff")) {
+        if (!player.hasPermission("lilybook.stafflist")) {
             return;
         }
         String message = String.format("&e%s &bleft the server!", player.getName());
