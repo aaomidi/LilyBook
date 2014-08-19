@@ -40,6 +40,7 @@ public class LilyManager {
         register(new AlertEvent(ChannelType.ALERT_SERVERS));
         register(new DispatchEvent(ChannelType.DISPATCH_COMMAND));
         register(new MsgEvent(ChannelType.MESSAGE_PLAYER));
+        register(new NotifyStaffEvent(ChannelType.NOTIFY_STAFF));
         register(new SendPlayersEvent(ChannelType.PLAYER_LIST));
         register(new SendStaffEvent(ChannelType.STAFF_LIST));
     }

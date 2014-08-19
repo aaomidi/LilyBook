@@ -11,3 +11,6 @@ Modular-Settings:
   # Shall this server send it's playerlist to the proxy?
   Send-Player-List:
     Active: true
+  Staff-Connection-Notify:
+    Active: true
+    Server: "hub"

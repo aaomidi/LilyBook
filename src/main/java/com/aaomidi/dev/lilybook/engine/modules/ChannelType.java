@@ -9,6 +9,7 @@ public enum ChannelType {
     ALERT_SERVERS("AlertServers"),
     DISPATCH_COMMAND("DispatchCommand"),
     MESSAGE_PLAYER("MessagePlayer"),
+    NOTIFY_STAFF("NotifyStaff"),
     PLAYER_LIST("PlayerList"),
     STAFF_LIST("StaffList");
 

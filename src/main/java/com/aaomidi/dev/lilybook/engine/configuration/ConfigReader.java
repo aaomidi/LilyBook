@@ -7,8 +7,8 @@ import org.bukkit.configuration.file.FileConfiguration;
 import java.util.Map;
 
 public class ConfigReader {
-    private final LilyBook instance;
     private static FileConfiguration config;
+    private final LilyBook instance;
 
     public ConfigReader(LilyBook instance, FileConfiguration config) {
         this.instance = instance;
@@ -26,4 +26,9 @@ public class ConfigReader {
     public static Map<String, Object> getPlayerListSettings() {
         return config.getConfigurationSection("Modular-Settings.Send-Player-List").getValues(false);
     }
+
+    public static Map<String, Object> getConnectionNotifySettings() {
+        return config.getConfigurationSection("Modular-Settings.Staff-Connection-Notify").getValues(false);
+    }
+
 }
