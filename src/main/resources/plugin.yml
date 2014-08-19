@@ -5,8 +5,10 @@ author: aaomidi
 softdepened: [Essentials]
 commands:
   adminchat:
-    description: Access admin chat
+    description: Access admin chat.
     aliases: [staffchat, ac, sc, admin, a]
+  alert:
+    description: Sends an alert to the proxy.
   dispatch:
     description: Dispatch a command on all or some of the servers.
   find:
