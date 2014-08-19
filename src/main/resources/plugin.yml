@@ -30,6 +30,7 @@ commands:
 permissions:
   lilybook.*:
     description: All the permissions for this plugin.
+    default: op
     children:
       lilybook.adminchat: true
       lilybook.alert: true
