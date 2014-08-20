@@ -28,6 +28,7 @@ public class ConfigReader {
     }
 
     public static Map<String, Object> getConnectionNotifySettings() {
+
         return config.getConfigurationSection("Modular-Settings.Staff-Connection-Notify").getValues(false);
     }
 
