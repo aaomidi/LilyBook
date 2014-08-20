@@ -48,6 +48,7 @@ public class LilyBook extends JavaPlugin {
         if (!new File(this.getDataFolder(), "config.yml").exists()) {
             this.saveDefaultConfig();
         }
+
     }
 
     public void onEnable() {

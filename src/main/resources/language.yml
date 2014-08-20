@@ -1,0 +1,24 @@
+#$s$ is serverName, $p$ is targetPlayerName, $c$ is command, $d$ is 'count',
+StaffJoin: "&e$p$ &bjoined the server!"
+StaffLeave: "&e$p$ &bleft the server!"
+StaffChatEnable: "&bStaff chat was enabled for you!"
+StaffChatDisable: "&bStaff chat was disabled for you!"
+AlertConfirmation: "&bYour message was broadcasted on &e$s$ &bservers(s)!"
+DispatchConfirmation: "&bThe command &e$c$ &bwas executed on &e$s$ &bserver(s)!"
+FindPositive: "&bThe server found $d$ possible match(es) for your entry $e$ \n."
+FoundFormat: "&bPlayer: &e$s$ &bon Server: &e%s%\n"
+SendAllConfirmation: "&bSent all players to &e$s$!"
+SendConfirmation: "&bSent player &e$p$ &bto server &e$s$."
+ServerCommand: "&bServers currently online are: "
+ServerFormat: "&e$s$ &8($b$d$&8)"
+#This is basically the color between the server's names.
+CommaAndDotColor: "&e"
+DispatchNotify: "&bThe command &e$c$ &bfrom &e$s$ &bwas successfully executed!"
+
+
+ErrorNoReply: "&cYou have no one to reply too!"
+ErrorPlayerNotOnline: "&cThat player is not online"
+ErrorPlayerNotFound: "&cThat player was not found!"
+ErrorNoServerArgument: "&cPlease specify a server."
+ErrorNoCommandArgument: "&cPlease specify a command."
+ErrorNotPlayer: "&cSorry, this command is only executable via in game players!"

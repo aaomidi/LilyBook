@@ -8,6 +8,7 @@ import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -37,6 +38,10 @@ public class CommandsManager implements CommandExecutor {
     }
 
     private void register(LilyCommand lilyCommand) {
+        PluginCommand command = instance.getCommand(lilyCommand.getName());
+        if (command == null) {
+            return;
+        }
         commands.put(lilyCommand.getName(), lilyCommand);
         instance.getCommand(lilyCommand.getName()).setExecutor(this);
     }

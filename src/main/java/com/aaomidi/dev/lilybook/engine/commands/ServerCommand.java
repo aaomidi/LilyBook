@@ -26,8 +26,9 @@ public class ServerCommand extends LilyCommand {
                 sb.append(String.format("&e%s &8(&b%d&8)", proxyPlayers.getServerName(), proxyPlayers.getPlayersCount()));
                 if (x == Caching.getNetworkPlayersMap().size()) {
                     sb.append("&e.");
+                } else {
+                    sb.append("&e, ");
                 }
-                sb.append("&e, ");
                 x++;
             }
             StringManager.sendMessage(commandSender, sb.toString());
