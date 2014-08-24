@@ -2,6 +2,7 @@ package com.aaomidi.dev.lilybook.engine.commands;
 
 import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.StringManager;
+import com.aaomidi.dev.lilybook.engine.configuration.I18n;
 import com.aaomidi.dev.lilybook.engine.modules.ChannelType;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
@@ -21,7 +22,7 @@ public class ReplyCommand extends LilyCommand {
             return true;
         }
         if (lilyPlayer.getConversee() == null) {
-            StringManager.sendMessage(commandSender, "&cYou have no one to reply you.");
+            StringManager.sendMessage(commandSender, I18n.ERROR_NO_REPLY);
         }
         String message = "";
         for (int i = 0; i < args.length; i++) {

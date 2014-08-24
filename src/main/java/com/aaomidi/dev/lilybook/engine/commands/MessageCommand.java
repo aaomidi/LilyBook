@@ -3,6 +3,7 @@ package com.aaomidi.dev.lilybook.engine.commands;
 
 import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.StringManager;
+import com.aaomidi.dev.lilybook.engine.configuration.I18n;
 import com.aaomidi.dev.lilybook.engine.modules.ChannelType;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
@@ -30,7 +31,7 @@ public class MessageCommand extends LilyCommand {
                 }
                 String receiver = args[0];
                 if (receiver.length() > 16) {
-                    StringManager.sendMessage(commandSender, "&cThat player is not online");
+                    StringManager.sendMessage(commandSender, I18n.ERROR_PLAYER_NOT_ONLINE);
                 }
                 String message = "";
                 for (int i = 1; i < args.length; i++) {

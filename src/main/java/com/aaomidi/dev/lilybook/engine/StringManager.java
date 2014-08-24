@@ -94,4 +94,25 @@ public class StringManager {
         }
         return sb.toString();
     }
+
+    /**
+     * Method to purify a message according to its arguments.
+     *
+     * @param rawMessage The message to @purifyMessage.
+     * @param serverName Name of server, if N/A enter null.
+     * @param playerName Name of player, if N/A enter null.
+     * @param command    Command string, if N/A enter null.
+     * @param count      The integer argument, if N/A enter null.
+     * @param subMessage The sub-message, if N/A enter null.
+     * @return The purified message.
+     */
+    public static String purifyMessage(String rawMessage, String serverName, String playerName, String command, Integer count, String subMessage) {
+        String purifiedMessage = rawMessage
+                .replace("%s%", serverName)
+                .replace("%p%", playerName)
+                .replace("%c%", command)
+                .replace("%d%", String.valueOf(count))
+                .replace("%m%", subMessage);
+        return purifiedMessage;
+    }
 }

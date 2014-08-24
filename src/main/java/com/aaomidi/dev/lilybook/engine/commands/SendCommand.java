@@ -3,6 +3,7 @@ package com.aaomidi.dev.lilybook.engine.commands;
 
 import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.StringManager;
+import com.aaomidi.dev.lilybook.engine.configuration.I18n;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
 import org.bukkit.command.Command;
@@ -24,17 +25,18 @@ public class SendCommand extends LilyCommand {
                     return;
                 }
                 if (args.length == 1) {
-                    StringManager.sendMessage(commandSender, "&cPlease specify a server.");
+                    StringManager.sendMessage(commandSender, I18n.ERROR_NO_SERVER_ARGUMENT);
                     return;
                 }
                 final String playerName = args[0];
                 final String serverName = args[1];
                 boolean response = instance.getLilyManager().teleportRequest(playerName, serverName);
                 if (!response) {
-                    StringManager.sendMessage(commandSender, "&cThat player is not online.");
+                    StringManager.sendMessage(commandSender, I18n.ERROR_PLAYER_NOT_ONLINE);
                     return;
                 }
-                StringManager.sendMessage(commandSender, String.format("&bSent player &e%s &bto server &e%s.", playerName, serverName));
+                //StringManager.sendMessage(commandSender, String.format("&bSent player &e%s &bto server &e%s.", playerName, serverName));
+                StringManager.sendMessage(commandSender, StringManager.purifyMessage(I18n.SEND_CONFIRMATION, serverName, playerName, null, null, null));
                 return;
             }
         }.runTaskAsynchronously(instance);

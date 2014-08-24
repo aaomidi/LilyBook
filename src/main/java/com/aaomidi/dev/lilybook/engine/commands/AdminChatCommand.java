@@ -3,6 +3,7 @@ package com.aaomidi.dev.lilybook.engine.commands;
 
 import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.StringManager;
+import com.aaomidi.dev.lilybook.engine.configuration.I18n;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
 import org.bukkit.command.Command;
@@ -17,16 +18,16 @@ public class AdminChatCommand extends LilyCommand {
     public boolean execute(LilyBook instance, LilyPlayer lilyPlayer, final CommandSender commandSender, Command command, String[] args) {
         if (args.length == 0) {
             if (lilyPlayer == null) {
-                StringManager.sendMessage(commandSender, "&cSorry, this command is only executable via players in-game.");
+                StringManager.sendMessage(commandSender, I18n.ERROR_NOT_PLAYER);
                 return true;
             }
             if (lilyPlayer.isStaffChat()) {
                 lilyPlayer.setStaffChat(false);
-                StringManager.sendMessage(commandSender, "&bStaff chat was disabled for you.");
+                StringManager.sendMessage(commandSender, I18n.STAFF_CHAT_DISABLE);
                 return true;
             }
             lilyPlayer.setStaffChat(true);
-            StringManager.sendMessage(commandSender, "&bStaff chat was enabled for you.");
+            StringManager.sendMessage(commandSender, I18n.STAFF_CHAT_ENABLE);
             return true;
         }
         String message = "";

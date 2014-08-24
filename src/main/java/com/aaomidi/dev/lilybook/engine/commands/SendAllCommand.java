@@ -3,6 +3,7 @@ package com.aaomidi.dev.lilybook.engine.commands;
 
 import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.StringManager;
+import com.aaomidi.dev.lilybook.engine.configuration.I18n;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
 import org.bukkit.command.Command;
@@ -33,7 +34,7 @@ public class SendAllCommand extends LilyCommand {
                 }
             }.runTaskAsynchronously(instance);
         }
-        StringManager.sendMessage(commandSender, String.format("&bSent all players to &e%s.", serverName));
+        StringManager.sendMessage(commandSender, StringManager.purifyMessage(I18n.SEND_ALL_CONFIRMATION, serverName, null, null, null, null));
         return true;
     }
 }

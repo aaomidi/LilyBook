@@ -2,6 +2,7 @@ package com.aaomidi.dev.lilybook.engine.commands;
 
 import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.StringManager;
+import com.aaomidi.dev.lilybook.engine.configuration.I18n;
 import com.aaomidi.dev.lilybook.engine.modules.ChannelType;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
@@ -24,10 +25,10 @@ public class AlertCommand extends LilyCommand {
         String serverName = null;
         if (argument.equalsIgnoreCase("-s")) {
             if (args.length == 1) {
-                StringManager.sendMessage(commandSender, "&bPlease specify a server.");
+                StringManager.sendMessage(commandSender, I18n.ERROR_NO_SERVER_ARGUMENT);
                 return true;
             } else if (args.length == 2) {
-                StringManager.sendMessage(commandSender, "&bPlease specify a command.");
+                StringManager.sendMessage(commandSender, I18n.ERROR_NO_COMMAND_ARGUMENT);
                 return true;
             } else {
                 serverName = args[1];
@@ -46,7 +47,7 @@ public class AlertCommand extends LilyCommand {
         if (serverName == null) {
             serverName = "all";
         }
-        StringManager.sendMessage(commandSender, String.format("&bYour message was broadcast on &e%s &bserver(s).", serverName));
+        StringManager.sendMessage(commandSender, StringManager.purifyMessage(I18n.ALERT_CONFIRMATION, serverName, null, null, null, null));
         return true;
     }
 }

@@ -6,27 +6,29 @@ import lombok.RequiredArgsConstructor;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
-import java.io.IOException;
 
 @RequiredArgsConstructor
 public class LilyConfig {
     @Getter
     private final File file;
-    private YamlConfiguration config;
+    @Getter
+    private final YamlConfiguration config;
 
-    public YamlConfiguration getConfig() {
-        if (config != null) {
-            return config;
-        }
-        config = YamlConfiguration.loadConfiguration(file);
-        return config;
-    }
-
-    public void saveConfig() {
+    public boolean saveConfig() {
         try {
             getConfig().save(file);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+            return true;
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public boolean loadConfig() {
+        try {
+            getConfig().load(file);
+            return true;
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
     }
 }
