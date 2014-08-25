@@ -27,16 +27,16 @@ public class CommandsManager implements CommandExecutor {
 
     //TODO Make the usage editable via server admins.
     private void setupCommands() {
-        register(new AdminChatCommand("adminchat", "lilybook.adminchat", false, "&3/adminchat &e(Message)"));
-        register(new AlertCommand("alert", "lilybook.alert", false, "&3/alert &e(-s ServerName) [Command]"));
-        register(new DispatchCommand("dispatch", "lilybook.dispatch", false, "&3/dispatch &e(-s ServerName) [Command]"));
-        register(new FindCommand("find", "lilybook.find", false, "&3/find &e[PlayerName]"));
-        register(new GListCommand("glist", "lilybook.glist", false, "&3/glist"));
-        register(new MessageCommand("message", "lilybook.message", true, "&3/msg &e[PlayerName] [Message]"));
-        register(new ReplyCommand("reply", "lilybook.message", true, "&3/reply &e[Message]"));
-        register(new SendAllCommand("sendall", "lilybook.sendall", false, "&3/sendall &e[ServerName]"));
-        register(new SendCommand("send", "lilybook.send", false, "&3/send &e[PlayerName] &e[ServerName]"));
-        register(new ServerCommand("server", "lilybook.server", true, "&3/server &e(ServerName)"));
+        register(new AdminChatCommand("adminchat", "lilybook.adminchat", false, I18n.COMMAND_ADMIN_CHAT));
+        register(new AlertCommand("alert", "lilybook.alert", false, I18n.COMMAND_ALERT));
+        register(new DispatchCommand("dispatch", "lilybook.dispatch", false, I18n.COMMAND_DISPATCH));
+        register(new FindCommand("find", "lilybook.find", false, I18n.COMMAND_FIND));
+        register(new GListCommand("glist", "lilybook.glist", false, I18n.COMMAND_GLIST));
+        register(new MessageCommand("message", "lilybook.message", true, I18n.COMMAND_MESSAGE));
+        register(new ReplyCommand("reply", "lilybook.message", true, I18n.COMMAND_REPLY));
+        register(new SendAllCommand("sendall", "lilybook.sendall", false, I18n.COMMAND_SEND_ALL));
+        register(new SendCommand("send", "lilybook.send", false, I18n.COMMAND_SEND));
+        register(new ServerCommand("server", "lilybook.server", true, I18n.COMMAND_SERVER));
     }
 
     private void register(LilyCommand lilyCommand) {

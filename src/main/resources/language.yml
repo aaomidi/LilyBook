@@ -22,7 +22,6 @@ GlobalListStaffFormat: "&e$p$&8(&b$s$&8)"
 # This is basically the color of the seperator.
 CommaAndDotColor: "&e"
 # End seperator message.
-This: "Test"
 # Start error messages.
 ErrorNoReply: "&cYou have no one to reply too!"
 ErrorPlayerNotOnline: "&cThat player is not online"
@@ -33,10 +32,19 @@ ErrorNotPlayer: "&cSorry, this command is only executable via in game players!"
 ErrorNoPermission: "&cYou do not have permissions to run that command!"
 ErrorServerOffline: "&cThat server seems to be offline"
 # End error messages.
-# Start command usages.
-
-# End command usages.
 # The following two have different arguments.
 PrivateMessageFormat: "&8&l[&b$server$&8&l][&e$receiver$&8&l]&r $message$"
 SocialSpyFormat: "&8&l[&eSocialSpy&8&l][&e$server$8&l][&b$sender$&8&l][&e$receiver$&8&l]&r $message$"
 # End of messages with different arguments
+# Start command usages.
+CommandAdminChat: "&3/adminchat &e(Message)"
+CommandAlert: "&3/alert &e(-s ServerName) [Command]"
+CommandDispatch: "&3/dispatch &e(-s ServerName) [Command]"
+CommandFind: "&3/find &e[PlayerName]"
+CommandGList: "&3/glist"
+CommandMessage: "&3/msg &e[PlayerName] [Message]"
+CommandReply: "&3/reply &e[Message]"
+CommandSendAll: "&3/sendall &e[ServerName]"
+CommandSend: "&3/send &e[PlayerName] &e[ServerName]"
+CommandServer: "&3/server &e(ServerName)"
+# End command usages.

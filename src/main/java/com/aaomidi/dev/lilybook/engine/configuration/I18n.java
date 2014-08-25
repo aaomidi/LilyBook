@@ -33,6 +33,17 @@ public class I18n {
     public static String ERROR_NOT_PLAYER;
     public static String ERROR_NO_PERMISSION;
     public static String ERROR_SERVER_OFFLINE;
+    public static String COMMAND_ADMIN_CHAT;
+    public static String COMMAND_ALERT;
+    public static String COMMAND_DISPATCH;
+    public static String COMMAND_FIND;
+    public static String COMMAND_GLIST;
+    public static String COMMAND_MESSAGE;
+    public static String COMMAND_REPLY;
+    public static String COMMAND_SEND_ALL;
+    public static String COMMAND_SEND;
+    public static String COMMAND_SERVER;
+
 
     public I18n() {
         this.setupStrings();
@@ -41,6 +52,7 @@ public class I18n {
     private void setupStrings() {
         LilyConfig lilyConfig = ConfigWriter.getLanguagesConfig();
         YamlConfiguration config = lilyConfig.getConfig();
+        //Start general output messages.
         STAFF_JOIN = config.getString("StaffJoin");
         STAFF_LEAVE = config.getString("StaffLeave");
         STAFF_CHAT_ENABLE = config.getString("StaffChatEnable");
@@ -53,14 +65,14 @@ public class I18n {
         SEND_CONFIRMATION = config.getString("SendConfirmation");
         SERVER_COMMAND = config.getString("ServerCommand");
         SERVER_FORMAT = config.getString("ServerFormat");
-        COMMA_AND_DOT_COLOR = config.getString("CommaAndDotColor");
         DISPATCH_NOTIFY = config.getString("DispatchNotify");
-        STAFF_MESSAGE_FORMAT = config.getString("StaffMessageFormat");
-        PRIVATE_MESSAGE_FORMAT = config.getString("PrivateMessageFormat");
         SOCIAL_SPY_FORMAT = config.getString("SocialSpyFormat");
         GLOBAL_LIST_SERVERS_FORMAT = config.getString("GlobalListServerFormat");
-        GLOBAL_LIST_STAFF_FORMAT = config.getString("GlobalListStaffFormat");
         GLOBAL_LIST_STAFF_TEXT = config.getString("GlobalListStaffText");
+        GLOBAL_LIST_STAFF_FORMAT = config.getString("GlobalListStaffFormat");
+        // End general output messages.
+        COMMA_AND_DOT_COLOR = config.getString("CommaAndDotColor");
+        // Start error messages.
         ERROR_NO_REPLY = config.getString("ErrorNoReply");
         ERROR_PLAYER_NOT_ONLINE = config.getString("ErrorPlayerNotOnline");
         ERROR_PLAYER_NOT_FOUND = config.getString("ErrorPlayerNotFound");
@@ -69,5 +81,22 @@ public class I18n {
         ERROR_NOT_PLAYER = config.getString("ErrorNotPlayer");
         ERROR_NO_PERMISSION = config.getString("ErrorNoPermission");
         ERROR_SERVER_OFFLINE = config.getString("ErrorServerOffline");
+        // End error messages.
+        // Start different argument messages.
+        STAFF_MESSAGE_FORMAT = config.getString("StaffMessageFormat");
+        PRIVATE_MESSAGE_FORMAT = config.getString("PrivateMessageFormat");
+        // End different argument messages.
+        // Start command usages.
+        COMMAND_ADMIN_CHAT = ("CommandAdminChat");
+        COMMAND_ALERT = ("CommandAlert");
+        COMMAND_DISPATCH = ("CommandDispatch");
+        COMMAND_FIND = ("CommandFind");
+        COMMAND_GLIST = ("CommandGList");
+        COMMAND_MESSAGE = ("CommandMessage");
+        COMMAND_REPLY = ("CommandReply");
+        COMMAND_SEND_ALL = ("CommandSendAll");
+        COMMAND_SEND = ("CommandSend");
+        COMMAND_SERVER = ("CommandServer");
+        // End command usages.
     }
 }
