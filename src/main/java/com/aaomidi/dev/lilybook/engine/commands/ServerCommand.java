@@ -4,6 +4,7 @@ package com.aaomidi.dev.lilybook.engine.commands;
 import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.Caching;
 import com.aaomidi.dev.lilybook.engine.StringManager;
+import com.aaomidi.dev.lilybook.engine.configuration.I18n;
 import com.aaomidi.dev.lilybook.engine.modules.Callback;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
@@ -20,14 +21,16 @@ public class ServerCommand extends LilyCommand {
     public boolean execute(LilyBook instance, LilyPlayer lilyPlayer, final CommandSender commandSender, Command command, String[] args) {
         if (args.length == 0) {
             StringBuilder sb = new StringBuilder();
-            sb.append("&bServers currently online are: ");
+            //sb.append("&bServers currently online are: ");
+            sb.append(I18n.SERVER_COMMAND);
             int x = 1;
             for (ProxyPlayers proxyPlayers : Caching.getNetworkPlayersMap().values()) {
-                sb.append(String.format("&e%s &8(&b%d&8)", proxyPlayers.getServerName(), proxyPlayers.getPlayersCount()));
+                //sb.append(String.format("&e%s &8(&b%d&8)", proxyPlayers.getServerName(), proxyPlayers.getPlayersCount()));
+                sb.append(StringManager.purifyMessage(I18n.SERVER_FORMAT, proxyPlayers.getServerName(), null, null, proxyPlayers.getPlayersCount(), null));
                 if (x == Caching.getNetworkPlayersMap().size()) {
-                    sb.append("&e.");
+                    sb.append(String.format("%s.", I18n.COMMA_AND_DOT_COLOR));
                 } else {
-                    sb.append("&e, ");
+                    sb.append(String.format("%s, ", I18n.COMMA_AND_DOT_COLOR));
                 }
                 x++;
             }
@@ -40,7 +43,7 @@ public class ServerCommand extends LilyCommand {
                 @Override
                 public void execute(Boolean response) {
                     if (!response) {
-                        StringManager.sendMessage(commandSender, "&cThat server seems to be offline.");
+                        StringManager.sendMessage(commandSender, I18n.ERROR_SERVER_OFFLINE);
                     }
                 }
             };

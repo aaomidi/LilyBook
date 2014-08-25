@@ -7,7 +7,10 @@ import lombok.Getter;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.nio.file.Files;
+import java.util.Map;
 
 public class ConfigWriter {
     @Getter
@@ -25,9 +28,20 @@ public class ConfigWriter {
 
     public void setupLanguageFile() {
         try {
-            File file = new File(instance.getDataFolder(), "languages.yml");
+            File file = new File(instance.getDataFolder(), "language.yml");
             if (!file.exists()) {
-                Files.copy(instance.getResource("languages.yml"), file.toPath());
+                Files.copy(instance.getResource("language.yml"), file.toPath());
+            } else {
+                Reader reader = new InputStreamReader(instance.getResource("language.yml"));
+                YamlConfiguration updatedConfig = YamlConfiguration.loadConfiguration(reader);
+                YamlConfiguration currentConfig = YamlConfiguration.loadConfiguration(file);
+                for (Map.Entry<String, Object> entry : updatedConfig.getValues(true).entrySet()) {
+                    if (currentConfig.contains(entry.getKey())) {
+                        continue;
+                    }
+                    currentConfig.set(entry.getKey(), entry.getValue());
+                }
+                currentConfig.save(file);
             }
             YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
             languagesConfig = null;

@@ -3,6 +3,7 @@ package com.aaomidi.dev.lilybook.engine;
 
 import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.commands.*;
+import com.aaomidi.dev.lilybook.engine.configuration.I18n;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
 import org.bukkit.command.Command;
@@ -24,6 +25,7 @@ public class CommandsManager implements CommandExecutor {
         this.setupCommands();
     }
 
+    //TODO Make the usage editable via server admins.
     private void setupCommands() {
         register(new AdminChatCommand("adminchat", "lilybook.adminchat", false, "&3/adminchat &e(Message)"));
         register(new AlertCommand("alert", "lilybook.alert", false, "&3/alert &e(-s ServerName) [Command]"));
@@ -53,12 +55,12 @@ public class CommandsManager implements CommandExecutor {
         if (commands.containsKey(command.getName())) {
             LilyCommand lilyCommand = commands.get(command.getName());
             if (!commandSender.hasPermission(lilyCommand.getPermission())) {
-                StringManager.sendMessage(commandSender, "&cSorry, you do not have permission to run that command.");
+                StringManager.sendMessage(commandSender, I18n.ERROR_NO_PERMISSION);
                 return true;
             }
             if (lilyCommand.isForcePlayer()) {
                 if (!(commandSender instanceof Player)) {
-                    StringManager.sendMessage(commandSender, "&cSorry, this command is only executable via players in-game.");
+                    StringManager.sendMessage(commandSender, I18n.ERROR_NOT_PLAYER);
                     return true;
                 }
                 return lilyCommand.execute(instance, lilyPlayer, commandSender, command, args);

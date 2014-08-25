@@ -8,6 +8,7 @@ import com.aaomidi.dev.lilybook.engine.RunnableManager;
 import com.aaomidi.dev.lilybook.engine.bukkitevents.ConnectionEvent;
 import com.aaomidi.dev.lilybook.engine.bukkitevents.TalkEvent;
 import com.aaomidi.dev.lilybook.engine.configuration.ConfigReader;
+import com.aaomidi.dev.lilybook.engine.configuration.ConfigWriter;
 import com.earth2me.essentials.Essentials;
 import lilypad.client.connect.api.Connect;
 import lombok.Getter;
@@ -33,6 +34,8 @@ public class LilyBook extends JavaPlugin {
     private LilyManager lilyManager;
     @Getter
     private ConfigReader configReader;
+    @Getter
+    private ConfigWriter configWriter;
     @Getter
     private CommandsManager commandsManager;
     @Getter
@@ -81,6 +84,7 @@ public class LilyBook extends JavaPlugin {
 
     private void registerClasses() {
         configReader = new ConfigReader(this, this.getConfig());
+        configWriter = new ConfigWriter(this);
         lilyManager = new LilyManager(this);
         caching = new Caching(this);
         runnableManager = new RunnableManager(this);

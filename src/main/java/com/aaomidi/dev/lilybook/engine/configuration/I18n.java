@@ -24,6 +24,7 @@ public class I18n {
     public static String SOCIAL_SPY_FORMAT;
     public static String GLOBAL_LIST_SERVERS_FORMAT;
     public static String GLOBAL_LIST_STAFF_FORMAT;
+    public static String GLOBAL_LIST_STAFF_TEXT;
     public static String ERROR_NO_REPLY;
     public static String ERROR_PLAYER_NOT_ONLINE;
     public static String ERROR_PLAYER_NOT_FOUND;
@@ -31,6 +32,7 @@ public class I18n {
     public static String ERROR_NO_COMMAND_ARGUMENT;
     public static String ERROR_NOT_PLAYER;
     public static String ERROR_NO_PERMISSION;
+    public static String ERROR_SERVER_OFFLINE;
 
     public I18n() {
         this.setupStrings();
@@ -58,6 +60,7 @@ public class I18n {
         SOCIAL_SPY_FORMAT = config.getString("SocialSpyFormat");
         GLOBAL_LIST_SERVERS_FORMAT = config.getString("GlobalListServerFormat");
         GLOBAL_LIST_STAFF_FORMAT = config.getString("GlobalListStaffFormat");
+        GLOBAL_LIST_STAFF_TEXT = config.getString("GlobalListStaffText");
         ERROR_NO_REPLY = config.getString("ErrorNoReply");
         ERROR_PLAYER_NOT_ONLINE = config.getString("ErrorPlayerNotOnline");
         ERROR_PLAYER_NOT_FOUND = config.getString("ErrorPlayerNotFound");
@@ -65,5 +68,6 @@ public class I18n {
         ERROR_NO_COMMAND_ARGUMENT = config.getString("ErrorNoCommandArgument");
         ERROR_NOT_PLAYER = config.getString("ErrorNotPlayer");
         ERROR_NO_PERMISSION = config.getString("ErrorNoPermission");
+        ERROR_SERVER_OFFLINE = config.getString("ErrorServerOffline");
     }
 }
