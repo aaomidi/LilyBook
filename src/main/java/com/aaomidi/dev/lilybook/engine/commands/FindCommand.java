@@ -42,7 +42,7 @@ public class FindCommand extends LilyCommand {
             public void run() {
                 for (ProxyPlayers proxyPlayers : networkPlayersMap.values()) {
                     for (String pName : proxyPlayers.getPlayers()) {
-                        if (pName.toLowerCase().startsWith(playerName)) {
+                        if (pName.toLowerCase().startsWith(playerName.toLowerCase()) || pName.equalsIgnoreCase(playerName)) {
                             possibleMatches.put(pName, proxyPlayers.getServerName());
                         }
                     }

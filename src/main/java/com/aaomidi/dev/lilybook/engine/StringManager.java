@@ -112,12 +112,27 @@ public class StringManager {
      * @return The purified message.
      */
     public static String purifyMessage(String rawMessage, String serverName, String playerName, String command, Integer count, String subMessage) {
+        if (serverName == null) {
+            serverName = "";
+        }
+        if (playerName == null) {
+            playerName = "";
+        }
+        if (command == null) {
+            command = "";
+        }
+        if (count == null) {
+            count = 0;
+        }
+        if (subMessage == null) {
+            subMessage = "";
+        }
         return rawMessage
-                .replace("%s%", serverName)
-                .replace("%p%", playerName)
-                .replace("%c%", command)
-                .replace("%d%", String.valueOf(count))
-                .replace("%m%", subMessage);
+                .replace("$s$", serverName)
+                .replace("$p$", playerName)
+                .replace("$c$", command)
+                .replace("$d$", String.valueOf(count))
+                .replace("$m$", subMessage);
 
     }
 
@@ -131,6 +146,18 @@ public class StringManager {
      * @return The purified message.
      */
     public static String purifyPrivateMessage(String rawMessage, String server, String sender, String receiver, String msg) {
+        if (server == null) {
+            server = "";
+        }
+        if (sender == null) {
+            sender = "";
+        }
+        if (receiver == null) {
+            receiver = "";
+        }
+        if (msg == null) {
+            msg = "";
+        }
         return rawMessage
                 .replace("$server$", server)
                 .replace("$sender$", sender)

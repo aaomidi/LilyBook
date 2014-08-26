@@ -60,7 +60,7 @@ public class I18n {
         ALERT_CONFIRMATION = config.getString("AlertConfirmation");
         DISPATCH_CONFIRMATION = config.getString("DispatchConfirmation");
         FIND_POSITIVE = config.getString("FindPositive");
-        FIND_FORMAT = config.getString("FoundFormat");
+        FIND_FORMAT = config.getString("FindFormat");
         SEND_ALL_CONFIRMATION = config.getString("SendAllConfirmation");
         SEND_CONFIRMATION = config.getString("SendConfirmation");
         SERVER_COMMAND = config.getString("ServerCommand");
@@ -87,16 +87,16 @@ public class I18n {
         PRIVATE_MESSAGE_FORMAT = config.getString("PrivateMessageFormat");
         // End different argument messages.
         // Start command usages.
-        COMMAND_ADMIN_CHAT = ("CommandAdminChat");
-        COMMAND_ALERT = ("CommandAlert");
-        COMMAND_DISPATCH = ("CommandDispatch");
-        COMMAND_FIND = ("CommandFind");
-        COMMAND_GLIST = ("CommandGList");
-        COMMAND_MESSAGE = ("CommandMessage");
-        COMMAND_REPLY = ("CommandReply");
-        COMMAND_SEND_ALL = ("CommandSendAll");
-        COMMAND_SEND = ("CommandSend");
-        COMMAND_SERVER = ("CommandServer");
+        COMMAND_ADMIN_CHAT = config.getString("CommandAdminChat");
+        COMMAND_ALERT = config.getString("CommandAlert");
+        COMMAND_DISPATCH = config.getString("CommandDispatch");
+        COMMAND_FIND = config.getString("CommandFind");
+        COMMAND_GLIST = config.getString("CommandGList");
+        COMMAND_MESSAGE = config.getString("CommandMessage");
+        COMMAND_REPLY = config.getString("CommandReply");
+        COMMAND_SEND_ALL = config.getString("CommandSendAll");
+        COMMAND_SEND = config.getString("CommandSend");
+        COMMAND_SERVER = config.getString("CommandServer");
         // End command usages.
     }
 }

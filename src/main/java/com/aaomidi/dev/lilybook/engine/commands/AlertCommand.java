@@ -38,9 +38,12 @@ public class AlertCommand extends LilyCommand {
                 }
             }
         } else {
-            if (args.length > 1) {
+            if (args.length < 1) {
                 StringManager.sendMessage(commandSender, getUsage());
                 return true;
+            }
+            for (String arg : args) {
+                message += arg + " ";
             }
         }
         instance.getLilyManager().asyncMessageRequest(ChannelType.ALERT_SERVERS, message, serverName);

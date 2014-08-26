@@ -15,13 +15,13 @@ ServerCommand: "&bServers currently online are: "
 ServerFormat: "&e$s$ &8($b$d$&8)"
 StaffMessageFormat: "&8[&4&lS&8][&a$s$&8][&6$p$&8] &e$m$"
 DispatchNotify: "&bThe command &e$c$ &bfrom &e$s$ &bwas successfully executed!"
-GlobalListServerFormat: "&8&l[&b$s$&8&l] &e$m$\n"
+GlobalListServerFormat: "&8&l[&b$s$&8&l] &e$d$\n"
 GlobalListStaffText: "&bCurrent staff online are: "
 GlobalListStaffFormat: "&e$p$&8(&b$s$&8)"
 # End general output messages.
 # This is basically the color of the seperator.
 CommaAndDotColor: "&e"
-# End seperator message.
+# End separator message.
 # Start error messages.
 ErrorNoReply: "&cYou have no one to reply too!"
 ErrorPlayerNotOnline: "&cThat player is not online"
@@ -33,7 +33,7 @@ ErrorNoPermission: "&cYou do not have permissions to run that command!"
 ErrorServerOffline: "&cThat server seems to be offline"
 # End error messages.
 # The following two have different arguments.
-PrivateMessageFormat: "&8&l[&b$server$&8&l][&e$receiver$&8&l]&r $message$"
+PrivateMessageFormat: "&8&l[&b$server$&8&l][&e$sender$&8&l]&r $message$"
 SocialSpyFormat: "&8&l[&eSocialSpy&8&l][&e$server$8&l][&b$sender$&8&l][&e$receiver$&8&l]&r $message$"
 # End of messages with different arguments
 # Start command usages.

@@ -15,10 +15,7 @@ import lilypad.client.connect.api.result.FutureResult;
 import lilypad.client.connect.api.result.StatusCode;
 import org.bukkit.scheduler.BukkitRunnable;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class LilyManager {
     private final LilyBook instance;
@@ -84,10 +81,9 @@ public class LilyManager {
      */
     public void messageRequest(final ChannelType channelType, final String message, final String... servers) {
         try {
-            MessageRequest request = null;
-            List<String> serverList = null;
-            if (servers != null) {
-                serverList = new ArrayList<>();
+            MessageRequest request;
+            List<String> serverList = new ArrayList<>();
+            if (servers != null && !Arrays.asList(servers).contains(null)) {
                 Collections.addAll(serverList, servers);
             }
             request = new MessageRequest(serverList, channelType.toString(), message);
