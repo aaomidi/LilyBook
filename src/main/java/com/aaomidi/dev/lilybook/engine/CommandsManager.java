@@ -28,6 +28,7 @@ public class CommandsManager implements CommandExecutor {
     //TODO Make the usage editable via server admins.
     private void setupCommands() {
         register(new AdminChatCommand("adminchat", "lilybook.adminchat", false, I18n.COMMAND_ADMIN_CHAT));
+        register(new AlertClearCommand("alertclear", "lilybook.alert", false, I18n.COMMAND_ALERT_CLEAR));
         register(new AlertCommand("alert", "lilybook.alert", false, I18n.COMMAND_ALERT));
         register(new DispatchCommand("dispatch", "lilybook.dispatch", false, I18n.COMMAND_DISPATCH));
         register(new FindCommand("find", "lilybook.find", false, I18n.COMMAND_FIND));

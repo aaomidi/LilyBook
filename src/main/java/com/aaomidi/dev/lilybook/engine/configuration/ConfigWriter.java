@@ -29,20 +29,15 @@ public class ConfigWriter {
             if (!file.exists()) {
                 Files.copy(instance.getResource("language.yml"), file.toPath());
             } else {
-               /* Reader reader = new InputStreamReader(instance.getResource("language.yml"));
-                YamlConfiguration updatedConfig = YamlConfiguration.loadConfiguration(reader);
+            /*    Yaml updatedConfig = new Yaml();
+                updatedConfig.load(instance.getResource("language.yml"));
                 YamlConfiguration currentConfig = YamlConfiguration.loadConfiguration(file);
-                for (Map.Entry<String, Object> entry : updatedConfig.getValues(true).entrySet()) {
-                    if (currentConfig.contains(entry.getKey())) {
-                        continue;
-                    }
-                    currentConfig.set(entry.getKey(), entry.getValue());
-                }
-                currentConfig.save(file); */
+            */
             }
             YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
             languagesConfig = null;
             languagesConfig = new LilyConfig(file, config);
+
         } catch (Exception ex) {
             throw new Error("Error when creating/reading the languages.yml file." + ex);
         }

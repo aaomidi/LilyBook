@@ -34,6 +34,7 @@ public class I18n {
     public static String ERROR_NO_PERMISSION;
     public static String ERROR_SERVER_OFFLINE;
     public static String COMMAND_ADMIN_CHAT;
+    public static String COMMAND_ALERT_CLEAR;
     public static String COMMAND_ALERT;
     public static String COMMAND_DISPATCH;
     public static String COMMAND_FIND;
@@ -88,6 +89,7 @@ public class I18n {
         // End different argument messages.
         // Start command usages.
         COMMAND_ADMIN_CHAT = config.getString("CommandAdminChat");
+        COMMAND_ALERT = config.getString("CommandAlertClear");
         COMMAND_ALERT = config.getString("CommandAlert");
         COMMAND_DISPATCH = config.getString("CommandDispatch");
         COMMAND_FIND = config.getString("CommandFind");

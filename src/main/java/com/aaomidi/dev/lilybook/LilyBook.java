@@ -116,6 +116,5 @@ public class LilyBook extends JavaPlugin {
         for (Player player : this.getServer().getOnlinePlayers()) {
             lilyManager.teleportRequest(player.getName(), (String) restartSettings.get("Server"));
         }
-
     }
 }

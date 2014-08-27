@@ -38,7 +38,8 @@ SocialSpyFormat: "&8&l[&eSocialSpy&8&l][&e$server$8&l][&b$sender$&8&l][&e$receiv
 # End of messages with different arguments
 # Start command usages.
 CommandAdminChat: "&3/adminchat &e(Message)"
-CommandAlert: "&3/alert &e(-s ServerName) [Command]"
+CommandAlertClear: "&3/alertclear &e(-s ServerName) [message]"
+CommandAlert: "&3/alert &e(-s ServerName) [message]"
 CommandDispatch: "&3/dispatch &e(-s ServerName) [Command]"
 CommandFind: "&3/find &e[PlayerName]"
 CommandGList: "&3/glist"

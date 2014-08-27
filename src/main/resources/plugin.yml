@@ -7,6 +7,8 @@ commands:
   adminchat:
     description: Access admin chat.
     aliases: [staffchat, ac, sc, admin, a]
+  alertclear:
+    description: Sends an alert with no formatting to the proxy.
   alert:
     description: Sends an alert to the proxy.
   dispatch:

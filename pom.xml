@@ -25,6 +25,16 @@
             <id>ess-repo</id>
             <url>http://repo.ess3.net/content/groups/essentials/</url>
         </repository>
+        <repository>
+            <id>relicum-snapshot</id>
+            <url>http://repository-relicum.forge.cloudbees.com/snapshot/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -57,6 +67,12 @@
             <artifactId>Essentials</artifactId>
             <version>2.14-SNAPSHOT</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.codemine</groupId>
+            <artifactId>jchat</artifactId>
+            <version>1.0.3-SNAPSHOT</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 

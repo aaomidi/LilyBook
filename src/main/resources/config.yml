@@ -1,7 +1,7 @@
 General-Settings:
   # This prefix is used when sending messages from the plugin.
   # You can set it to null to have no messages.
-  Prefix: "&6[&5LilyEssentials&6] "
+  Prefix: "&6[&5LilyBook&6] "
 Modular-Settings:
   # Shall this plugin teleport players on Restart?
   Teleport-On-Restart:
@@ -14,3 +14,16 @@ Modular-Settings:
   Staff-Connection-Notify:
     Active: true
     Server: "hub"
+Broadcast-Messages:
+  - Message:
+    Link:
+    Hover:
+    Click:
+  - Message:
+    Link:
+    Hover:
+    Click:
+  - Message:
+    Link:
+    Hover:
+    Click:

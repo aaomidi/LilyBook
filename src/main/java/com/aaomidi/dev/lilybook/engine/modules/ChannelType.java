@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum ChannelType {
     ADMIN_CHAT_MESSAGE("AdminChatMessage"),
+    ALERT_CLEAR_SERVERS("AlertClearServers"),
     ALERT_SERVERS("AlertServers"),
     DISPATCH_COMMAND("DispatchCommand"),
     MESSAGE_PLAYER("MessagePlayer"),
