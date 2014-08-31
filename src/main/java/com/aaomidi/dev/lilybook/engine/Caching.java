@@ -112,6 +112,9 @@ public class Caching {
     }
 
     public void init() {
+        networkPlayersMap = null;
+        networkStaffMap = null;
+        lilyPlayersMap = null;
         networkPlayersMap = new MapMaker().concurrencyLevel(3).makeMap();
         networkStaffMap = new MapMaker().concurrencyLevel(3).makeMap();
         lilyPlayersMap = new MapMaker().concurrencyLevel(3).makeMap();
