@@ -75,10 +75,13 @@ public class StringManager {
 
     public static String getGlobalListMessage() {
         StringBuilder sb = new StringBuilder();
+        int total = 0;
         for (Map.Entry<String, ProxyPlayers> entry : Caching.getNetworkPlayersMap().entrySet()) {
             // sb.append(String.format("&8&l[&b%s&8&l] &r&e%d\n", entry.getKey(), entry.getValue().getPlayersCount()));
+            total += entry.getValue().getPlayersCount();
             sb.append(StringManager.purifyMessage(I18n.GLOBAL_LIST_SERVERS_FORMAT, entry.getKey(), null, null, entry.getValue().getPlayersCount(), null));
         }
+        sb.insert(0, StringManager.purifyMessage(I18n.GLOBAL_LIST_TOTAL_PLAYERS, null, null, null, total, null));
         int x = 1;
         int y = 1;
         sb.append(I18n.GLOBAL_LIST_STAFF_TEXT);

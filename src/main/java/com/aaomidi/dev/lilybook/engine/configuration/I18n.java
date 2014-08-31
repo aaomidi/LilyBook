@@ -22,6 +22,7 @@ public class I18n {
     public static String STAFF_MESSAGE_FORMAT;
     public static String PRIVATE_MESSAGE_FORMAT;
     public static String SOCIAL_SPY_FORMAT;
+    public static String GLOBAL_LIST_TOTAL_PLAYERS;
     public static String GLOBAL_LIST_SERVERS_FORMAT;
     public static String GLOBAL_LIST_STAFF_FORMAT;
     public static String GLOBAL_LIST_STAFF_TEXT;
@@ -68,6 +69,7 @@ public class I18n {
         SERVER_FORMAT = config.getString("ServerFormat");
         DISPATCH_NOTIFY = config.getString("DispatchNotify");
         SOCIAL_SPY_FORMAT = config.getString("SocialSpyFormat");
+        GLOBAL_LIST_TOTAL_PLAYERS = config.getString("GlobalListTotalPlayers");
         GLOBAL_LIST_SERVERS_FORMAT = config.getString("GlobalListServerFormat");
         GLOBAL_LIST_STAFF_TEXT = config.getString("GlobalListStaffText");
         GLOBAL_LIST_STAFF_FORMAT = config.getString("GlobalListStaffFormat");
