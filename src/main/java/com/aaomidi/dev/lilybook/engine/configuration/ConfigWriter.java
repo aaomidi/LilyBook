@@ -35,19 +35,22 @@ public class ConfigWriter {
             } else {
                 config = YamlConfiguration.loadConfiguration(file);
                 languagesConfig = new LilyConfig(file, config);
-                this.updateConfiguration(languagesConfig);
+                file = this.updateConfiguration(languagesConfig);
+                config = YamlConfiguration.loadConfiguration(file);
+                languagesConfig = new LilyConfig(file, config);
             }
-
         } catch (Exception ex) {
             throw new Error("Error when creating/reading the languages.yml file." + ex);
         }
     }
 
-    public void updateConfiguration(LilyConfig lilyConfig) {
+    public File updateConfiguration(LilyConfig lilyConfig) throws Exception {
         YamlConfiguration config = lilyConfig.getConfig();
+        File file = lilyConfig.getFile();
         if (!config.contains("GlobalListTotalPlayers")) {
-            config.set("GlobalListTotalPlayers", "&bNetwork: $d$");
+            file.renameTo(new File(instance.getDataFolder(), "language.old.yml"));
+            Files.copy(instance.getResource("language.yml"), file.toPath());
         }
-        lilyConfig.saveConfig();
+        return file;
     }
 }
