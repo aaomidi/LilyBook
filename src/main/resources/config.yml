@@ -14,16 +14,3 @@ Modular-Settings:
   Staff-Connection-Notify:
     Active: true
     Server: "hub"
-Broadcast-Messages:
-  - Message:
-    Link:
-    Hover:
-    Click:
-  - Message:
-    Link:
-    Hover:
-    Click:
-  - Message:
-    Link:
-    Hover:
-    Click:
