@@ -47,7 +47,7 @@ public class ConfigWriter {
     public File updateConfiguration(LilyConfig lilyConfig) throws Exception {
         YamlConfiguration config = lilyConfig.getConfig();
         File file = lilyConfig.getFile();
-        if (!config.contains("GlobalListTotalPlayers")) {
+        if (!config.contains("GlobalListTotalPlayers") || !config.contains("ErrorOnServer")) {
             file.renameTo(new File(instance.getDataFolder(), "language.old.yml"));
             Files.copy(instance.getResource("language.yml"), file.toPath());
         }

@@ -32,6 +32,7 @@ ErrorNoCommandArgument: "&cPlease specify a command."
 ErrorNotPlayer: "&cSorry, this command is only executable via in game players!"
 ErrorNoPermission: "&cYou do not have permissions to run that command!"
 ErrorServerOffline: "&cThat server seems to be offline"
+ErrorOnServer: "&cYou cannot go to a server you're already online on."
 # End error messages.
 # The following two have different arguments.
 PrivateMessageFormat: "&8&l[&b$server$&8&l][&e$sender$&8&l]&r $message$"

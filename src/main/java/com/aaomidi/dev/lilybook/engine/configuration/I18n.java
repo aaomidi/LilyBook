@@ -34,6 +34,7 @@ public class I18n {
     public static String ERROR_NOT_PLAYER;
     public static String ERROR_NO_PERMISSION;
     public static String ERROR_SERVER_OFFLINE;
+    public static String ERROR_ON_SERVER;
     public static String COMMAND_ADMIN_CHAT;
     public static String COMMAND_ALERT_CLEAR;
     public static String COMMAND_ALERT;
@@ -84,6 +85,7 @@ public class I18n {
         ERROR_NOT_PLAYER = config.getString("ErrorNotPlayer");
         ERROR_NO_PERMISSION = config.getString("ErrorNoPermission");
         ERROR_SERVER_OFFLINE = config.getString("ErrorServerOffline");
+        ERROR_ON_SERVER = config.getString("ErrorOnServer");
         // End error messages.
         // Start different argument messages.
         STAFF_MESSAGE_FORMAT = config.getString("StaffMessageFormat");

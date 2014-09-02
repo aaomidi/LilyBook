@@ -39,6 +39,9 @@ public class ServerCommand extends LilyCommand {
         }
         if (args.length == 1) {
             String serverName = args[0];
+            if (serverName.equalsIgnoreCase(LilyBook.getSERVER_NAME())) {
+                StringManager.sendMessage(commandSender, I18n.ERROR_ON_SERVER);
+            }
             Callback<Boolean> callback = new Callback<Boolean>() {
                 @Override
                 public void execute(Boolean response) {
