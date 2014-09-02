@@ -3,6 +3,7 @@ package com.aaomidi.dev.lilybook.engine;
 
 import com.aaomidi.dev.lilybook.LilyBook;
 import com.aaomidi.dev.lilybook.engine.commands.*;
+import com.aaomidi.dev.lilybook.engine.configuration.ConfigReader;
 import com.aaomidi.dev.lilybook.engine.configuration.I18n;
 import com.aaomidi.dev.lilybook.engine.modules.LilyCommand;
 import com.aaomidi.dev.lilybook.engine.objects.LilyPlayer;
@@ -45,8 +46,14 @@ public class CommandsManager implements CommandExecutor {
         if (command == null) {
             return;
         }
+        if (ConfigReader.getModularCommands().containsKey(lilyCommand.getName())) {
+            if (!ConfigReader.getModularCommands().get(lilyCommand.getName())) {
+                instance.getLogger().log(Level.WARNING, String.format("We didn't enable the command %s due to the fact that it was disabled in the configuration.", lilyCommand.getName()));
+            }
+        }
         commands.put(lilyCommand.getName(), lilyCommand);
         instance.getCommand(lilyCommand.getName()).setExecutor(this);
+        instance.getLogger().log(Level.SEVERE, String.format("Enabled command: " + lilyCommand.getName()));
     }
 
     @Override

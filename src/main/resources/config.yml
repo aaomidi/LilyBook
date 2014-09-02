@@ -14,3 +14,16 @@ Modular-Settings:
   Staff-Connection-Notify:
     Active: true
     Server: "hub"
+# Deactivate any commands you don't like here.
+Commands:
+  AdminChat: true
+  AlertClear: true
+  Alert: true
+  Dispatch: true
+  Find: true
+  GList: true
+  Message: true
+  Reply: true
+  SendAll: true
+  Send: true
+  Server: true
