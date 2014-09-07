@@ -49,7 +49,7 @@ public class MsgEvent extends LilyEvent {
                     }
                     if (player.hasPermission("lilybook.socialspy")) {
                         String msg = StringManager.getStaffCrossServerMessage(sender, sentMessage, messageSender, messageReceiver);
-                        StringManager.sendMessage(player, msg);
+                        StringManager.sendRawMessage(player, msg);
                     }
                 }
 
