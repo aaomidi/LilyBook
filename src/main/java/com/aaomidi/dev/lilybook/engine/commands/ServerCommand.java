@@ -50,7 +50,10 @@ public class ServerCommand extends LilyCommand {
                     }
                 }
             };
-            instance.getLilyManager().asyncTeleportRequest(commandSender.getName(), serverName, callback);
+
+            if (!instance.getLilyManager().asyncTeleportRequest(commandSender.getName(), serverName, callback)) {
+                StringManager.sendMessage(commandSender, I18n.ERROR_ON_SERVER);
+            }
             return true;
         }
         StringManager.sendMessage(commandSender, getUsage());

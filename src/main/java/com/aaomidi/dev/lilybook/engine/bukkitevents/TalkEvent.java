@@ -24,7 +24,7 @@ public class TalkEvent implements Listener {
         Player player = event.getPlayer();
         String message = event.getMessage();
         LilyPlayer lilyPlayer = Caching.getLilyPlayersMap().get(player.getName());
-        if (!lilyPlayer.isStaffChat()) {
+        if (lilyPlayer == null || !lilyPlayer.isStaffChat()) {
             return;
         }
         event.setCancelled(true);

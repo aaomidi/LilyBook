@@ -9,7 +9,6 @@ import com.earth2me.essentials.User;
 import lombok.Getter;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.codemine.jchatter.JChat;
 
 public class RunnableManager {
     private final LilyBook instance;
@@ -83,9 +82,6 @@ public class RunnableManager {
         staffListSendRunnable.runTaskTimerAsynchronously(instance, 100L, 600L);
     }
 
-    public void sendAlertMessages() {
-        JChat jChat = new JChat();
-    }
 
     public void cancelRunnables() {
         playerListSendRunnable.cancel();

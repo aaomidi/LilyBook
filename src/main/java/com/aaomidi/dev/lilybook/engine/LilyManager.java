@@ -123,10 +123,14 @@ public class LilyManager {
         }
     }
 
-    public void asyncTeleportRequest(final String playerName, final String serverName, final Callback<Boolean> callback) {
+    public boolean asyncTeleportRequest(final String playerName, final String serverName, final Callback<Boolean> callback) {
+        if (serverName.equalsIgnoreCase(LilyBook.getSERVER_NAME())) {
+            return false;
+        }
         new BukkitRunnable() {
             @Override
             public void run() {
+
                 final boolean result = teleportRequest(playerName, serverName);
                 new BukkitRunnable() {
                     @Override
@@ -136,5 +140,6 @@ public class LilyManager {
                 }.runTask(instance);
             }
         }.runTaskAsynchronously(instance);
+        return true;
     }
 }
